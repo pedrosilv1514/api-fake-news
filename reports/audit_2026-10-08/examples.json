@@ -1,0 +1,455 @@
+[
+  {
+    "id": "R1",
+    "kind": "resumo recente",
+    "expected": 1,
+    "source": "https://agenciagov.ebc.com.br/noticias/202610/201clista-suja201d-do-trabalho-analogo-a-escravidao-e-atualizada-com-82-novos-empregadores",
+    "source_date": "2026-10-06",
+    "text": "Em 6 de outubro de 2026, o Ministério do Trabalho informou a inclusão de 82 empregadores no cadastro de trabalho análogo à escravidão. Os casos envolvem 553 trabalhadores e foram identificados entre 2024 e 2026.",
+    "clean_text": "outubro ministério trabalho informou inclusão empregadores cadastro trabalho análogo escravidão casos envolvem trabalhadores identificados",
+    "predicted_label": 1,
+    "predicted_class": "REAL",
+    "confidence_predicted_class": 0.9981,
+    "api_taxa_confiabilidade": 99.81,
+    "correct_when_binary_ground_truth": true,
+    "latency_ms": 407.99108400096884,
+    "prob_fake": 0.0019,
+    "bias_label": "opinativo",
+    "bias_score": 0.61,
+    "explicacao_xai": {
+      "janela_analise": {
+        "evidencia": "A análise lexical sugere forte alinhamento com reportagens factuais e descritivas.",
+        "qualidade_da_fonte": "O domínio agenciagov.ebc.com.br requer verificação adicional, pois não está na lista principal de grande mídia ou órgãos oficiais.",
+        "corroboracao": "O modelo semântico detectou forte presença de viés linguístico, o que afeta a neutralidade da informação.",
+        "contexto": "A notícia analisada possui 14 palavras processadas.",
+        "atualidade": "A ferramenta analisa apenas a escrita, portanto a atualidade dos fatos requer pesquisa manual externa."
+      },
+      "o_que_sustenta": [
+        "Linguagem consistente e descritiva: informou",
+        "Linguagem consistente e descritiva: cadastro",
+        "Linguagem consistente e descritiva: escravidão"
+      ],
+      "o_que_enfraquece": [
+        "Termo que gerou leve alerta: trabalho",
+        "Termo que gerou leve alerta: casos",
+        "Termo que gerou leve alerta: trabalhadores",
+        "Termo que gerou leve alerta: ministério"
+      ],
+      "o_que_nao_foi_confirmado": [
+        "Nomes próprios, dados estatísticos e datas presentes no texto não foram verificados contra o mundo real (sem uso de busca web)."
+      ]
+    },
+    "modelos_usados": [
+      "LinearSVC (BR)",
+      "mDeBERTa-v3 (Zero-Shot)"
+    ]
+  },
+  {
+    "id": "R2",
+    "kind": "alteração numérica sintética",
+    "expected": 0,
+    "source": "https://agenciagov.ebc.com.br/noticias/202610/201clista-suja201d-do-trabalho-analogo-a-escravidao-e-atualizada-com-82-novos-empregadores",
+    "source_date": "2026-10-06",
+    "text": "Em 6 de outubro de 2026, o Ministério do Trabalho informou a inclusão de 8200 empregadores no cadastro de trabalho análogo à escravidão. Os casos envolvem 553 trabalhadores e foram identificados entre 2024 e 2026.",
+    "clean_text": "outubro ministério trabalho informou inclusão empregadores cadastro trabalho análogo escravidão casos envolvem trabalhadores identificados",
+    "predicted_label": 1,
+    "predicted_class": "REAL",
+    "confidence_predicted_class": 0.9981,
+    "api_taxa_confiabilidade": 99.81,
+    "correct_when_binary_ground_truth": false,
+    "latency_ms": 405.74479099996097,
+    "prob_fake": 0.0019,
+    "bias_label": "opinativo",
+    "bias_score": 0.6156,
+    "explicacao_xai": {
+      "janela_analise": {
+        "evidencia": "A análise lexical sugere forte alinhamento com reportagens factuais e descritivas.",
+        "qualidade_da_fonte": "O domínio agenciagov.ebc.com.br requer verificação adicional, pois não está na lista principal de grande mídia ou órgãos oficiais.",
+        "corroboracao": "O modelo semântico detectou forte presença de viés linguístico, o que afeta a neutralidade da informação.",
+        "contexto": "A notícia analisada possui 14 palavras processadas.",
+        "atualidade": "A ferramenta analisa apenas a escrita, portanto a atualidade dos fatos requer pesquisa manual externa."
+      },
+      "o_que_sustenta": [
+        "Linguagem consistente e descritiva: informou",
+        "Linguagem consistente e descritiva: cadastro",
+        "Linguagem consistente e descritiva: escravidão"
+      ],
+      "o_que_enfraquece": [
+        "Termo que gerou leve alerta: trabalho",
+        "Termo que gerou leve alerta: casos",
+        "Termo que gerou leve alerta: trabalhadores",
+        "Termo que gerou leve alerta: ministério"
+      ],
+      "o_que_nao_foi_confirmado": [
+        "Nomes próprios, dados estatísticos e datas presentes no texto não foram verificados contra o mundo real (sem uso de busca web)."
+      ]
+    },
+    "modelos_usados": [
+      "LinearSVC (BR)",
+      "mDeBERTa-v3 (Zero-Shot)"
+    ]
+  },
+  {
+    "id": "R3",
+    "kind": "resumo recente com negação",
+    "expected": 1,
+    "source": "https://www.tse.jus.br/comunicacao/radio/2026/Outubro/fato-ou-boato-mensagem-faltou-nao-significa-que-eleitor-deixou-de-votar",
+    "source_date": "2026-10-07",
+    "text": "Segundo esclarecimento do TSE de 7 de outubro de 2026, a mensagem \"faltou\" no serviço de justificativa não confirma ausência na votação. Os registros estão em processamento e a atualização é prevista até 11 de outubro.",
+    "clean_text": "segundo esclarecimento tse outubro mensagem faltou serviço justificativa confirma ausência votação registros processamento atualização prevista outubro",
+    "predicted_label": 1,
+    "predicted_class": "REAL",
+    "confidence_predicted_class": 0.9062,
+    "api_taxa_confiabilidade": 90.62,
+    "correct_when_binary_ground_truth": true,
+    "latency_ms": 385.1144579984975,
+    "prob_fake": 0.0938,
+    "bias_label": "opinativo",
+    "bias_score": 0.7957,
+    "explicacao_xai": {
+      "janela_analise": {
+        "evidencia": "A análise lexical sugere forte alinhamento com reportagens factuais e descritivas.",
+        "qualidade_da_fonte": "O domínio www.tse.jus.br requer verificação adicional, pois não está na lista principal de grande mídia ou órgãos oficiais.",
+        "corroboracao": "O modelo semântico detectou forte presença de viés linguístico, o que afeta a neutralidade da informação.",
+        "contexto": "A notícia analisada possui 16 palavras processadas.",
+        "atualidade": "A ferramenta analisa apenas a escrita, portanto a atualidade dos fatos requer pesquisa manual externa."
+      },
+      "o_que_sustenta": [
+        "Linguagem consistente e descritiva: registros",
+        "Linguagem consistente e descritiva: mensagem",
+        "Linguagem consistente e descritiva: votação",
+        "Linguagem consistente e descritiva: prevista"
+      ],
+      "o_que_enfraquece": [
+        "Termo que gerou leve alerta: confirma",
+        "Termo que gerou leve alerta: tse",
+        "Termo que gerou leve alerta: serviço",
+        "Termo que gerou leve alerta: ausência"
+      ],
+      "o_que_nao_foi_confirmado": [
+        "Nomes próprios, dados estatísticos e datas presentes no texto não foram verificados contra o mundo real (sem uso de busca web)."
+      ]
+    },
+    "modelos_usados": [
+      "LinearSVC (BR)",
+      "mDeBERTa-v3 (Zero-Shot)"
+    ]
+  },
+  {
+    "id": "R4",
+    "kind": "negação removida, sintético",
+    "expected": 0,
+    "source": "https://www.tse.jus.br/comunicacao/radio/2026/Outubro/fato-ou-boato-mensagem-faltou-nao-significa-que-eleitor-deixou-de-votar",
+    "source_date": "2026-10-07",
+    "text": "Segundo esclarecimento do TSE de 7 de outubro de 2026, a mensagem \"faltou\" no serviço de justificativa confirma ausência na votação. Os registros estão em processamento e a atualização é prevista até 11 de outubro.",
+    "clean_text": "segundo esclarecimento tse outubro mensagem faltou serviço justificativa confirma ausência votação registros processamento atualização prevista outubro",
+    "predicted_label": 1,
+    "predicted_class": "REAL",
+    "confidence_predicted_class": 0.9062,
+    "api_taxa_confiabilidade": 90.62,
+    "correct_when_binary_ground_truth": false,
+    "latency_ms": 400.677583000288,
+    "prob_fake": 0.0938,
+    "bias_label": "opinativo",
+    "bias_score": 0.8389,
+    "explicacao_xai": {
+      "janela_analise": {
+        "evidencia": "A análise lexical sugere forte alinhamento com reportagens factuais e descritivas.",
+        "qualidade_da_fonte": "O domínio www.tse.jus.br requer verificação adicional, pois não está na lista principal de grande mídia ou órgãos oficiais.",
+        "corroboracao": "O modelo semântico detectou forte presença de viés linguístico, o que afeta a neutralidade da informação.",
+        "contexto": "A notícia analisada possui 16 palavras processadas.",
+        "atualidade": "A ferramenta analisa apenas a escrita, portanto a atualidade dos fatos requer pesquisa manual externa."
+      },
+      "o_que_sustenta": [
+        "Linguagem consistente e descritiva: registros",
+        "Linguagem consistente e descritiva: mensagem",
+        "Linguagem consistente e descritiva: votação",
+        "Linguagem consistente e descritiva: prevista"
+      ],
+      "o_que_enfraquece": [
+        "Termo que gerou leve alerta: confirma",
+        "Termo que gerou leve alerta: tse",
+        "Termo que gerou leve alerta: serviço",
+        "Termo que gerou leve alerta: ausência"
+      ],
+      "o_que_nao_foi_confirmado": [
+        "Nomes próprios, dados estatísticos e datas presentes no texto não foram verificados contra o mundo real (sem uso de busca web)."
+      ]
+    },
+    "modelos_usados": [
+      "LinearSVC (BR)",
+      "mDeBERTa-v3 (Zero-Shot)"
+    ]
+  },
+  {
+    "id": "R5",
+    "kind": "resumo de esclarecimento recente",
+    "expected": 1,
+    "source": "https://www.tse.jus.br/comunicacao/radio/2026/Outubro/fato-ou-boato-justica-eleitoral-totaliza-e-divulga-os-resultados-no-mesmo-dia-da-eleicao",
+    "source_date": "2026-10-06",
+    "text": "O TSE esclareceu em 6 de outubro de 2026 que a interrupção no aplicativo Resultados, durante a eleição de 4 de outubro, atingiu a consulta pública. A contagem dos votos continuou sem alteração.",
+    "clean_text": "tse esclareceu outubro interrupção aplicativo resultados durante eleição outubro atingiu consulta pública contagem votos continuou alteração",
+    "predicted_label": 1,
+    "predicted_class": "REAL",
+    "confidence_predicted_class": 0.7263,
+    "api_taxa_confiabilidade": 72.63,
+    "correct_when_binary_ground_truth": true,
+    "latency_ms": 377.5860420009849,
+    "prob_fake": 0.2737,
+    "bias_label": "neutro",
+    "bias_score": 0.6689,
+    "explicacao_xai": {
+      "janela_analise": {
+        "evidencia": "A análise lexical sugere forte alinhamento com reportagens factuais e descritivas.",
+        "qualidade_da_fonte": "O domínio www.tse.jus.br requer verificação adicional, pois não está na lista principal de grande mídia ou órgãos oficiais.",
+        "corroboracao": "O modelo não detectou viés linguístico significativo. A linguagem parece neutra.",
+        "contexto": "A notícia analisada possui 16 palavras processadas.",
+        "atualidade": "A ferramenta analisa apenas a escrita, portanto a atualidade dos fatos requer pesquisa manual externa."
+      },
+      "o_que_sustenta": [
+        "Linguagem consistente e descritiva: votos",
+        "Linguagem consistente e descritiva: consulta",
+        "Linguagem consistente e descritiva: consulta pública",
+        "Linguagem consistente e descritiva: durante"
+      ],
+      "o_que_enfraquece": [
+        "Termo que gerou leve alerta: aplicativo",
+        "Termo que gerou leve alerta: tse",
+        "Termo que gerou leve alerta: atingiu",
+        "Termo que gerou leve alerta: resultados"
+      ],
+      "o_que_nao_foi_confirmado": [
+        "Nomes próprios, dados estatísticos e datas presentes no texto não foram verificados contra o mundo real (sem uso de busca web)."
+      ]
+    },
+    "modelos_usados": [
+      "LinearSVC (BR)",
+      "mDeBERTa-v3 (Zero-Shot)"
+    ]
+  },
+  {
+    "id": "R6",
+    "kind": "paráfrase de alegação desmentida",
+    "expected": 0,
+    "source": "https://www.tse.jus.br/comunicacao/radio/2026/Outubro/fato-ou-boato-justica-eleitoral-totaliza-e-divulga-os-resultados-no-mesmo-dia-da-eleicao",
+    "source_date": "2026-10-06",
+    "text": "A interrupção no aplicativo Resultados em 4 de outubro de 2026 modificou a contagem dos votos e alterou o resultado da eleição presidencial. A falha na consulta pública mudou a apuração oficial.",
+    "clean_text": "interrupção aplicativo resultados outubro modificou contagem votos alterou resultado eleição presidencial falha consulta pública mudou apuração oficial",
+    "predicted_label": 0,
+    "predicted_class": "FAKE",
+    "confidence_predicted_class": 0.5625,
+    "api_taxa_confiabilidade": 43.75,
+    "correct_when_binary_ground_truth": true,
+    "latency_ms": 346.49658300077135,
+    "prob_fake": 0.5625,
+    "bias_label": "opinativo",
+    "bias_score": 0.7994,
+    "explicacao_xai": {
+      "janela_analise": {
+        "evidencia": "O algoritmo identificou forte correlação matemática com padrões de desinformação.",
+        "qualidade_da_fonte": "O domínio www.tse.jus.br requer verificação adicional, pois não está na lista principal de grande mídia ou órgãos oficiais.",
+        "corroboracao": "O modelo semântico detectou forte presença de viés linguístico, o que afeta a neutralidade da informação.",
+        "contexto": "A notícia analisada possui 17 palavras processadas.",
+        "atualidade": "A ferramenta analisa apenas a escrita, portanto a atualidade dos fatos requer pesquisa manual externa."
+      },
+      "o_que_sustenta": [
+        "Uso de termos suspeitos ou urgentes: aplicativo",
+        "Uso de termos suspeitos ou urgentes: falha",
+        "Uso de termos suspeitos ou urgentes: alterou",
+        "Uso de termos suspeitos ou urgentes: resultados"
+      ],
+      "o_que_enfraquece": [
+        "Presença de termos comuns: presidencial",
+        "Presença de termos comuns: votos",
+        "Presença de termos comuns: consulta",
+        "Presença de termos comuns: consulta pública"
+      ],
+      "o_que_nao_foi_confirmado": [
+        "Nomes próprios, dados estatísticos e datas presentes no texto não foram verificados contra o mundo real (sem uso de busca web)."
+      ]
+    },
+    "modelos_usados": [
+      "LinearSVC (BR)",
+      "mDeBERTa-v3 (Zero-Shot)"
+    ]
+  },
+  {
+    "id": "E7",
+    "kind": "fragmento insuficiente",
+    "expected": null,
+    "source": "https://agenciagov.ebc.com.br/noticias/202610/201clista-suja201d-do-trabalho-analogo-a-escravidao-e-atualizada-com-82-novos-empregadores",
+    "source_date": "2026-10-06",
+    "text": "Ministério atualiza cadastro. Novos nomes foram incluídos.",
+    "clean_text": "ministério atualiza cadastro novos nomes incluídos",
+    "predicted_label": 1,
+    "predicted_class": "REAL",
+    "confidence_predicted_class": 0.9992,
+    "api_taxa_confiabilidade": 99.92,
+    "correct_when_binary_ground_truth": null,
+    "latency_ms": 231.97274999984074,
+    "prob_fake": 0.0008,
+    "bias_label": "opinativo",
+    "bias_score": 0.7186,
+    "explicacao_xai": {
+      "janela_analise": {
+        "evidencia": "A análise lexical sugere forte alinhamento com reportagens factuais e descritivas.",
+        "qualidade_da_fonte": "O domínio agenciagov.ebc.com.br requer verificação adicional, pois não está na lista principal de grande mídia ou órgãos oficiais.",
+        "corroboracao": "O modelo semântico detectou forte presença de viés linguístico, o que afeta a neutralidade da informação.",
+        "contexto": "A notícia analisada possui 6 palavras processadas.",
+        "atualidade": "A ferramenta analisa apenas a escrita, portanto a atualidade dos fatos requer pesquisa manual externa."
+      },
+      "o_que_sustenta": [
+        "Linguagem consistente e descritiva: cadastro"
+      ],
+      "o_que_enfraquece": [
+        "Termo que gerou leve alerta: novos",
+        "Termo que gerou leve alerta: nomes",
+        "Termo que gerou leve alerta: ministério",
+        "Termo que gerou leve alerta: atualiza"
+      ],
+      "o_que_nao_foi_confirmado": [
+        "Nomes próprios, dados estatísticos e datas presentes no texto não foram verificados contra o mundo real (sem uso de busca web)."
+      ]
+    },
+    "modelos_usados": [
+      "LinearSVC (BR)",
+      "mDeBERTa-v3 (Zero-Shot)"
+    ]
+  },
+  {
+    "id": "E8",
+    "kind": "clickbait com fato preservado",
+    "expected": 1,
+    "source": "https://agenciagov.ebc.com.br/noticias/202610/201clista-suja201d-do-trabalho-analogo-a-escravidao-e-atualizada-com-82-novos-empregadores",
+    "source_date": "2026-10-06",
+    "text": "VOCÊ NÃO VAI ACREDITAR! Veja o que aconteceu com 82 empregadores! Em 6 de outubro de 2026, o Ministério do Trabalho incluiu esses empregadores no cadastro de trabalho análogo à escravidão.",
+    "clean_text": "vai acreditar veja aconteceu empregadores outubro ministério trabalho incluiu empregadores cadastro trabalho análogo escravidão",
+    "predicted_label": 1,
+    "predicted_class": "REAL",
+    "confidence_predicted_class": 0.9996,
+    "api_taxa_confiabilidade": 99.96,
+    "correct_when_binary_ground_truth": true,
+    "latency_ms": 389.4481249990349,
+    "prob_fake": 0.0004,
+    "bias_label": "opinativo",
+    "bias_score": 0.8263,
+    "explicacao_xai": {
+      "janela_analise": {
+        "evidencia": "A análise lexical sugere forte alinhamento com reportagens factuais e descritivas.",
+        "qualidade_da_fonte": "O domínio agenciagov.ebc.com.br requer verificação adicional, pois não está na lista principal de grande mídia ou órgãos oficiais.",
+        "corroboracao": "O modelo semântico detectou forte presença de viés linguístico, o que afeta a neutralidade da informação.",
+        "contexto": "A notícia analisada possui 14 palavras processadas.",
+        "atualidade": "A ferramenta analisa apenas a escrita, portanto a atualidade dos fatos requer pesquisa manual externa."
+      },
+      "o_que_sustenta": [
+        "Linguagem consistente e descritiva: incluiu",
+        "Linguagem consistente e descritiva: cadastro",
+        "Linguagem consistente e descritiva: escravidão"
+      ],
+      "o_que_enfraquece": [
+        "Termo que gerou leve alerta: veja",
+        "Termo que gerou leve alerta: trabalho",
+        "Termo que gerou leve alerta: vai",
+        "Termo que gerou leve alerta: ministério"
+      ],
+      "o_que_nao_foi_confirmado": [
+        "Nomes próprios, dados estatísticos e datas presentes no texto não foram verificados contra o mundo real (sem uso de busca web)."
+      ]
+    },
+    "modelos_usados": [
+      "LinearSVC (BR)",
+      "mDeBERTa-v3 (Zero-Shot)"
+    ]
+  },
+  {
+    "id": "E9",
+    "kind": "sarcasmo sintético",
+    "expected": null,
+    "source": null,
+    "source_date": null,
+    "text": "Claro, agora as urnas têm uma bola de cristal e adivinham o voto antes de o eleitor chegar. Que maravilha de tecnologia! Esta frase é uma ironia, não uma reportagem.",
+    "clean_text": "claro agora urnas têm bola cristal adivinham voto antes eleitor chegar maravilha tecnologia frase ironia reportagem",
+    "predicted_label": 1,
+    "predicted_class": "REAL",
+    "confidence_predicted_class": 0.7675,
+    "api_taxa_confiabilidade": 76.75,
+    "correct_when_binary_ground_truth": null,
+    "latency_ms": 354.52195899961225,
+    "prob_fake": 0.2325,
+    "bias_label": "opinativo",
+    "bias_score": 0.9868,
+    "explicacao_xai": {
+      "janela_analise": {
+        "evidencia": "A análise lexical sugere forte alinhamento com reportagens factuais e descritivas.",
+        "qualidade_da_fonte": "O domínio domínio desconhecido requer verificação adicional, pois não está na lista principal de grande mídia ou órgãos oficiais.",
+        "corroboracao": "O modelo semântico detectou forte presença de viés linguístico, o que afeta a neutralidade da informação.",
+        "contexto": "A notícia analisada possui 16 palavras processadas.",
+        "atualidade": "A ferramenta analisa apenas a escrita, portanto a atualidade dos fatos requer pesquisa manual externa."
+      },
+      "o_que_sustenta": [
+        "Linguagem consistente e descritiva: frase",
+        "Linguagem consistente e descritiva: urnas",
+        "Linguagem consistente e descritiva: reportagem",
+        "Linguagem consistente e descritiva: antes"
+      ],
+      "o_que_enfraquece": [
+        "Termo que gerou leve alerta: têm",
+        "Termo que gerou leve alerta: tecnologia",
+        "Termo que gerou leve alerta: agora",
+        "Termo que gerou leve alerta: maravilha"
+      ],
+      "o_que_nao_foi_confirmado": [
+        "Nomes próprios, dados estatísticos e datas presentes no texto não foram verificados contra o mundo real (sem uso de busca web)."
+      ]
+    },
+    "modelos_usados": [
+      "LinearSVC (BR)",
+      "mDeBERTa-v3 (Zero-Shot)"
+    ]
+  },
+  {
+    "id": "E10",
+    "kind": "notícia histórica, rótulo do corpus",
+    "expected": 1,
+    "source": "https://noticias.uol.com.br/internacional/ultimas-noticias/2020/03/27/equador-prepara-cova-coletiva-para-mortos-por-covid-19-em-guaiaquil.htm",
+    "source_date": "2020-03-27",
+    "text": "Em 27 de março de 2020, o governo do Equador preparava uma cova coletiva em Guaiaquil para vítimas da covid-19. A informação descreve uma situação daquele período, e não um acontecimento atual.",
+    "clean_text": "março governo equador preparava cova coletiva guaiaquil vítimas covid informação descreve situação daquele período acontecimento atual",
+    "predicted_label": 1,
+    "predicted_class": "REAL",
+    "confidence_predicted_class": 0.9986,
+    "api_taxa_confiabilidade": 99.86,
+    "correct_when_binary_ground_truth": true,
+    "latency_ms": 359.76204199869244,
+    "prob_fake": 0.0014,
+    "bias_label": "neutro",
+    "bias_score": 0.7326,
+    "explicacao_xai": {
+      "janela_analise": {
+        "evidencia": "A análise lexical sugere forte alinhamento com reportagens factuais e descritivas.",
+        "qualidade_da_fonte": "O domínio noticias.uol.com.br é tradicionalmente reconhecido como veículo de imprensa ou fonte oficial.",
+        "corroboracao": "O modelo não detectou viés linguístico significativo. A linguagem parece neutra.",
+        "contexto": "A notícia analisada possui 16 palavras processadas.",
+        "atualidade": "A ferramenta analisa apenas a escrita, portanto a atualidade dos fatos requer pesquisa manual externa."
+      },
+      "o_que_sustenta": [
+        "Linguagem consistente e descritiva: vítimas",
+        "Linguagem consistente e descritiva: atual",
+        "Linguagem consistente e descritiva: descreve"
+      ],
+      "o_que_enfraquece": [
+        "Termo que gerou leve alerta: vítimas covid",
+        "Termo que gerou leve alerta: coletiva",
+        "Termo que gerou leve alerta: covid",
+        "Termo que gerou leve alerta: governo"
+      ],
+      "o_que_nao_foi_confirmado": [
+        "Nomes próprios, dados estatísticos e datas presentes no texto não foram verificados contra o mundo real (sem uso de busca web)."
+      ]
+    },
+    "modelos_usados": [
+      "LinearSVC (BR)",
+      "mDeBERTa-v3 (Zero-Shot)"
+    ]
+  }
+]

@@ -1,0 +1,343 @@
+{
+  "reference_date": "2026-10-08",
+  "items": [
+    {
+      "url": "https://www.santos.sp.gov.br/?q=noticia/santos-define-orgaos-que-atuarao-no-plano-preventivo-da-defesa-civil",
+      "title": "Santos define órgãos que atuarão no Plano Preventivo da Defesa Civil",
+      "published_at": "2026-10-07T00:00:00+00:00",
+      "updated_at": "2026-10-07T00:00:00+00:00",
+      "date_provenance": {
+        "published_at": "visible Publicado label; date precision; time/zone unavailable",
+        "updated_at": "visible Atualizado label; date precision; time/zone unavailable",
+        "event_date": "not inferred from publication date"
+      },
+      "accessed_at": "2026-10-08T20:09:00.009024+00:00",
+      "content_hash": "cbb3b4d1effb46d6627a6fec7b8b3861ffca776c5100467ce0ff5c830e9b60ed",
+      "recent_within_7_days": true,
+      "retrieval_and_extraction_ms": 3584.109,
+      "api_status_code": 200,
+      "api_local_latency_ms": 178.551,
+      "api_result": {
+        "system_version": "evidence-rules-v0.2.0",
+        "document": {
+          "title": "",
+          "body": "A Prefeitura de Santos divulgou no Diário Oficial a relação das secretarias e órgãos que participarão do Plano Preventivo da Defesa Civil (PPDC), que entra em vigor em 1º de novembro.",
+          "language": "pt",
+          "source_url": null,
+          "published_at": "2026-10-07T00:00:00Z",
+          "updated_at": null,
+          "event_date": null,
+          "date_provenance": {},
+          "fetched_at": "2026-10-08T20:09:00.009207Z"
+        },
+        "reference_date": "2026-10-08",
+        "results": [
+          {
+            "claim": {
+              "id": "a99e5e1d726402c3",
+              "text": "A Prefeitura de Santos divulgou no Diário Oficial a relação das secretarias e órgãos que participarão do Plano Preventivo da Defesa Civil (PPDC), que entra em vigor em 1º de novembro.",
+              "event_date": null,
+              "checkable": true,
+              "limitations": []
+            },
+            "verdict": "evidencia_insuficiente",
+            "confidence": null,
+            "confidence_kind": "indisponivel_sem_validacao_externa",
+            "evidence": [
+              {
+                "id": "cfcdfef52a331d3c",
+                "claim_id": "a99e5e1d726402c3",
+                "url": "https://www.santos.sp.gov.br/?q=noticia/santos-define-orgaos-que-atuarao-no-plano-preventivo-da-defesa-civil",
+                "title": "Santos define órgãos que atuarão no Plano Preventivo da Defesa Civil",
+                "excerpt": "A Prefeitura de Santos divulgou no Diário Oficial a relação das secretarias e órgãos que participarão do Plano Preventivo da Defesa Civil (PPDC), que entra em vigor em 1º de novembro.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": "2026-10-07T00:00:00Z",
+                "date_provenance": {
+                  "published_at": "visible Publicado label; date precision; time/zone unavailable",
+                  "updated_at": "visible Atualizado label; date precision; time/zone unavailable",
+                  "event_date": "not inferred from publication date"
+                },
+                "accessed_at": "2026-10-08T20:09:01.044240Z",
+                "content_hash": "d889739a68f27fee5437ef0e1bea61a60b057ec7525433f0e5e9797c6d45ba44",
+                "origin_group": "santos.sp.gov.br",
+                "provider": "download_https",
+                "relation": "sustenta",
+                "relevance_score": 1.0,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              }
+            ],
+            "rationale": "Regra conservadora: 1 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
+            "temporal_status": "evento_nao_identificado",
+            "limitations": [
+              "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
+              "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
+            ]
+          }
+        ],
+        "summary": {
+          "sustentada": 0,
+          "refutada": 0,
+          "evidencias_conflitantes": 0,
+          "evidencia_insuficiente": 1
+        },
+        "partial": false,
+        "limitations": [
+          "Protótipo de regras, sem validação externa recente ou confiança factual calibrada.",
+          "Metadados e trechos de sites podem estar incorretos; não há autenticação editorial.",
+          "Deduplicação por domínio/conteúdo não detecta todas as republicações."
+        ],
+        "retrieval_status": "provided_urls",
+        "latency_ms": 176.107,
+        "cache_hit": false,
+        "auxiliary": {}
+      },
+      "result": {
+        "system_version": "evidence-rules-v0.2.0",
+        "document": {
+          "title": "",
+          "body": "A Prefeitura de Santos divulgou no Diário Oficial a relação das secretarias e órgãos que participarão do Plano Preventivo da Defesa Civil (PPDC), que entra em vigor em 1º de novembro.",
+          "language": "pt",
+          "source_url": null,
+          "published_at": "2026-10-07T00:00:00Z",
+          "updated_at": null,
+          "event_date": null,
+          "date_provenance": {},
+          "fetched_at": "2026-10-08T20:09:00.009207Z"
+        },
+        "reference_date": "2026-10-08",
+        "results": [
+          {
+            "claim": {
+              "id": "a99e5e1d726402c3",
+              "text": "A Prefeitura de Santos divulgou no Diário Oficial a relação das secretarias e órgãos que participarão do Plano Preventivo da Defesa Civil (PPDC), que entra em vigor em 1º de novembro.",
+              "event_date": null,
+              "checkable": true,
+              "limitations": []
+            },
+            "verdict": "evidencia_insuficiente",
+            "confidence": null,
+            "confidence_kind": "indisponivel_sem_validacao_externa",
+            "evidence": [
+              {
+                "id": "cfcdfef52a331d3c",
+                "claim_id": "a99e5e1d726402c3",
+                "url": "https://www.santos.sp.gov.br/?q=noticia/santos-define-orgaos-que-atuarao-no-plano-preventivo-da-defesa-civil",
+                "title": "Santos define órgãos que atuarão no Plano Preventivo da Defesa Civil",
+                "excerpt": "A Prefeitura de Santos divulgou no Diário Oficial a relação das secretarias e órgãos que participarão do Plano Preventivo da Defesa Civil (PPDC), que entra em vigor em 1º de novembro.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": "2026-10-07T00:00:00Z",
+                "date_provenance": {
+                  "published_at": "visible Publicado label; date precision; time/zone unavailable",
+                  "updated_at": "visible Atualizado label; date precision; time/zone unavailable",
+                  "event_date": "not inferred from publication date"
+                },
+                "accessed_at": "2026-10-08T20:09:00.009024Z",
+                "content_hash": "d889739a68f27fee5437ef0e1bea61a60b057ec7525433f0e5e9797c6d45ba44",
+                "origin_group": "santos.sp.gov.br",
+                "provider": "download_https",
+                "relation": "sustenta",
+                "relevance_score": 1.0,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              }
+            ],
+            "rationale": "Regra conservadora: 1 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
+            "temporal_status": "evento_nao_identificado",
+            "limitations": [
+              "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
+              "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
+            ]
+          }
+        ],
+        "summary": {
+          "sustentada": 0,
+          "refutada": 0,
+          "evidencias_conflitantes": 0,
+          "evidencia_insuficiente": 1
+        },
+        "partial": false,
+        "limitations": [
+          "Protótipo de regras, sem validação externa recente ou confiança factual calibrada.",
+          "Metadados e trechos de sites podem estar incorretos; não há autenticação editorial.",
+          "Deduplicação por domínio/conteúdo não detecta todas as republicações."
+        ],
+        "retrieval_status": "real_https_public_source",
+        "latency_ms": 15.526,
+        "cache_hit": false,
+        "auxiliary": {}
+      },
+      "scope": "real retrieved source; one origin only; no independent human truth annotation"
+    },
+    {
+      "url": "https://www.santos.sp.gov.br/?q=noticia/ilha-diana-em-santos-recebe-equipamentos-para-atendimento-em-situacoes-de-emergencia",
+      "title": "Ilha Diana, em Santos, recebe equipamentos para atendimento em situações de emergência",
+      "published_at": "2026-10-06T00:00:00+00:00",
+      "updated_at": "2026-10-08T00:00:00+00:00",
+      "date_provenance": {
+        "published_at": "visible Publicado label; date precision; time/zone unavailable",
+        "updated_at": "visible Atualizado label; date precision; time/zone unavailable",
+        "event_date": "not inferred from publication date"
+      },
+      "accessed_at": "2026-10-08T20:09:01.582379+00:00",
+      "content_hash": "4db0d1bacad9d1917385006c79af5f52718050f5d2a94f078792d83a01cd11e1",
+      "recent_within_7_days": true,
+      "retrieval_and_extraction_ms": 534.828,
+      "api_status_code": 200,
+      "api_local_latency_ms": 200.528,
+      "api_result": {
+        "system_version": "evidence-rules-v0.2.0",
+        "document": {
+          "title": "",
+          "body": "A comunidade da Ilha Diana recebeu, sexta-feira (2), novos equipamentos para auxiliar no atendimento a situações de emergência.",
+          "language": "pt",
+          "source_url": null,
+          "published_at": "2026-10-06T00:00:00Z",
+          "updated_at": null,
+          "event_date": null,
+          "date_provenance": {},
+          "fetched_at": "2026-10-08T20:09:01.582579Z"
+        },
+        "reference_date": "2026-10-08",
+        "results": [
+          {
+            "claim": {
+              "id": "fbc37be64e685d72",
+              "text": "A comunidade da Ilha Diana recebeu, sexta-feira (2), novos equipamentos para auxiliar no atendimento a situações de emergência.",
+              "event_date": null,
+              "checkable": true,
+              "limitations": []
+            },
+            "verdict": "evidencia_insuficiente",
+            "confidence": null,
+            "confidence_kind": "indisponivel_sem_validacao_externa",
+            "evidence": [
+              {
+                "id": "801d9b71fcb78154",
+                "claim_id": "fbc37be64e685d72",
+                "url": "https://www.santos.sp.gov.br/?q=noticia/ilha-diana-em-santos-recebe-equipamentos-para-atendimento-em-situacoes-de-emergencia",
+                "title": "Ilha Diana, em Santos, recebe equipamentos para atendimento em situações de emergência",
+                "excerpt": "A comunidade da Ilha Diana recebeu, sexta-feira (2), novos equipamentos para auxiliar no atendimento a situações de emergência.",
+                "published_at": "2026-10-06T00:00:00Z",
+                "updated_at": "2026-10-08T00:00:00Z",
+                "date_provenance": {
+                  "published_at": "visible Publicado label; date precision; time/zone unavailable",
+                  "updated_at": "visible Atualizado label; date precision; time/zone unavailable",
+                  "event_date": "not inferred from publication date"
+                },
+                "accessed_at": "2026-10-08T20:09:01.928823Z",
+                "content_hash": "b87e089b695541fec0017315949dd21ea21e4368fd342d1d316ebddbcc18d766",
+                "origin_group": "santos.sp.gov.br",
+                "provider": "download_https",
+                "relation": "sustenta",
+                "relevance_score": 1.0,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              }
+            ],
+            "rationale": "Regra conservadora: 1 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
+            "temporal_status": "evento_nao_identificado",
+            "limitations": [
+              "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
+              "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
+            ]
+          }
+        ],
+        "summary": {
+          "sustentada": 0,
+          "refutada": 0,
+          "evidencias_conflitantes": 0,
+          "evidencia_insuficiente": 1
+        },
+        "partial": false,
+        "limitations": [
+          "Protótipo de regras, sem validação externa recente ou confiança factual calibrada.",
+          "Metadados e trechos de sites podem estar incorretos; não há autenticação editorial.",
+          "Deduplicação por domínio/conteúdo não detecta todas as republicações."
+        ],
+        "retrieval_status": "provided_urls",
+        "latency_ms": 199.556,
+        "cache_hit": false,
+        "auxiliary": {}
+      },
+      "result": {
+        "system_version": "evidence-rules-v0.2.0",
+        "document": {
+          "title": "",
+          "body": "A comunidade da Ilha Diana recebeu, sexta-feira (2), novos equipamentos para auxiliar no atendimento a situações de emergência.",
+          "language": "pt",
+          "source_url": null,
+          "published_at": "2026-10-06T00:00:00Z",
+          "updated_at": null,
+          "event_date": null,
+          "date_provenance": {},
+          "fetched_at": "2026-10-08T20:09:01.582579Z"
+        },
+        "reference_date": "2026-10-08",
+        "results": [
+          {
+            "claim": {
+              "id": "fbc37be64e685d72",
+              "text": "A comunidade da Ilha Diana recebeu, sexta-feira (2), novos equipamentos para auxiliar no atendimento a situações de emergência.",
+              "event_date": null,
+              "checkable": true,
+              "limitations": []
+            },
+            "verdict": "evidencia_insuficiente",
+            "confidence": null,
+            "confidence_kind": "indisponivel_sem_validacao_externa",
+            "evidence": [
+              {
+                "id": "801d9b71fcb78154",
+                "claim_id": "fbc37be64e685d72",
+                "url": "https://www.santos.sp.gov.br/?q=noticia/ilha-diana-em-santos-recebe-equipamentos-para-atendimento-em-situacoes-de-emergencia",
+                "title": "Ilha Diana, em Santos, recebe equipamentos para atendimento em situações de emergência",
+                "excerpt": "A comunidade da Ilha Diana recebeu, sexta-feira (2), novos equipamentos para auxiliar no atendimento a situações de emergência.",
+                "published_at": "2026-10-06T00:00:00Z",
+                "updated_at": "2026-10-08T00:00:00Z",
+                "date_provenance": {
+                  "published_at": "visible Publicado label; date precision; time/zone unavailable",
+                  "updated_at": "visible Atualizado label; date precision; time/zone unavailable",
+                  "event_date": "not inferred from publication date"
+                },
+                "accessed_at": "2026-10-08T20:09:01.582379Z",
+                "content_hash": "b87e089b695541fec0017315949dd21ea21e4368fd342d1d316ebddbcc18d766",
+                "origin_group": "santos.sp.gov.br",
+                "provider": "download_https",
+                "relation": "sustenta",
+                "relevance_score": 1.0,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              }
+            ],
+            "rationale": "Regra conservadora: 1 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
+            "temporal_status": "evento_nao_identificado",
+            "limitations": [
+              "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
+              "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
+            ]
+          }
+        ],
+        "summary": {
+          "sustentada": 0,
+          "refutada": 0,
+          "evidencias_conflitantes": 0,
+          "evidencia_insuficiente": 1
+        },
+        "partial": false,
+        "limitations": [
+          "Protótipo de regras, sem validação externa recente ou confiança factual calibrada.",
+          "Metadados e trechos de sites podem estar incorretos; não há autenticação editorial.",
+          "Deduplicação por domínio/conteúdo não detecta todas as republicações."
+        ],
+        "retrieval_status": "real_https_public_source",
+        "latency_ms": 1.816,
+        "cache_hit": false,
+        "auxiliary": {}
+      },
+      "scope": "real retrieved source; one origin only; no independent human truth annotation"
+    }
+  ],
+  "blind_evaluation": false,
+  "quality_metrics": null
+}

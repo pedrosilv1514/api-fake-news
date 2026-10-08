@@ -1,94 +1,59 @@
-import pandas as pd
-import logging
-import os
-import mlflow
-import mlflow.sklearn
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.svm import LinearSVC
+"""Train a candidate only. The legacy served artifact is never replaced."""
+import argparse
+from datetime import datetime, timezone
+import hashlib
+import importlib.metadata
+import json
+from pathlib import Path
+
+import joblib
 from sklearn.calibration import CalibratedClassifierCV
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.frozen import FrozenEstimator
+from sklearn.metrics import accuracy_score, brier_score_loss, classification_report, confusion_matrix
 from sklearn.pipeline import Pipeline
-from sklearn.metrics import classification_report, f1_score
+from sklearn.svm import LinearSVC
 
-# Importar o pré-processador do pipeline de produção
-from ml.preprocessing import limpar_texto
+from ml.contracts import LABELS
+from ml.dataset import load_articles, temporal_splits
+from ml.preprocessing import PREPROCESSING_VERSION, normalizar_texto
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+ROOT = Path(__file__).resolve().parents[1]
 
-def run_training():
-    logger.info("Iniciando pipeline de treinamento unificado...")
 
-    # Configurar MLflow para usar sqlite local
-    mlflow.set_tracking_uri("sqlite:///mlruns.db")
-    mlflow.set_experiment("FakeNews_Detection_Factual")
+def run_training(data_path=None, output_dir=None):
+    source = Path(data_path or ROOT / "fake_recogna_limpo.csv")
+    version = datetime.now(timezone.utc).strftime("candidate-%Y%m%dT%H%M%S%fZ")
+    df, excluded = load_articles(source)
+    parts, split_info = temporal_splits(df)
+    model = Pipeline([
+        ("tfidf", TfidfVectorizer(preprocessor=normalizar_texto, lowercase=False, token_pattern=r"(?u)R\$|[€$£]|\b\w+(?:[.,/-]\w+)*(?:%|‰|°[cCfF])?", ngram_range=(1,2), max_features=50_000, max_df=.95)),
+        ("clf", LinearSVC(C=1, max_iter=5000, random_state=42)),
+    ])
+    model.fit(parts["train"].text, parts["train"].Classe)
+    candidate = CalibratedClassifierCV(FrozenEstimator(model), method="sigmoid")
+    candidate.fit(parts["calibration"].text, parts["calibration"].Classe)
+    out = Path(output_dir or ROOT / "models/candidates") / version
+    out.mkdir(parents=True, exist_ok=False)
+    joblib.dump(candidate, out / "model.joblib")
+    predictions = candidate.predict(parts["test"].text)
+    p_fake = candidate.predict_proba(parts["test"].text)[:,list(candidate.classes_).index(0)]
+    test = parts["test"].Classe.to_numpy()
+    cm = confusion_matrix(test, predictions, labels=[0,1])
+    metrics = {"n":len(test), "accuracy":accuracy_score(test,predictions), "classification_report":classification_report(test,predictions,output_dict=True), "confusion_matrix":cm.tolist(), "matrix_label_order":["FAKE","REAL"], "fpr":float(cm[1,0]/cm[1].sum()), "fnr":float(cm[0,1]/cm[0].sum()), "brier":brier_score_loss((test==0).astype(int),p_fake), "scope":"historical transformed corpus; not independent recent validation"}
+    manifest = {"version":version, "status":"candidate_not_promoted", "preprocessing_version":PREPROCESSING_VERSION, "input_contract":"title + body", "label_mapping":LABELS, "fake_label":0, "source_sha256":hashlib.sha256(source.read_bytes()).hexdigest(), "model_sha256":hashlib.sha256((out/"model.joblib").read_bytes()).hexdigest(), "source_quality":"Noticia in local FakeRecogna is already transformed; lost facts cannot be restored", "excluded":excluded, "split_info":split_info, "splits":{s:{"n":len(p), "from":str(p.published.min()), "to":str(p.published.max()), "classes":{str(k):int(v) for k,v in p.Classe.value_counts().items()}} for s,p in parts.items()}, "versions":{n:importlib.metadata.version(n) for n in ["scikit-learn","numpy","pandas","joblib"]}, "recent_validation":False, "production_approved":False}
+    for name,obj in [("manifest.json",manifest),("metrics.json",metrics)]:
+        (out/name).write_text(json.dumps(obj,indent=2,ensure_ascii=False)+"\n")
+    for name,part in parts.items():
+        part[["article_id","group_id","text_hash","published","source_domain","Classe"]].to_csv(out/(name+"_split.csv"),index=False)
+    parts["test"].assign(predicted=predictions,prob_fake=p_fake)[["article_id","Classe","predicted","prob_fake"]].to_csv(out/"test_predictions.csv",index=False)
+    print(json.dumps({"candidate":str(out),"metrics":metrics},ensure_ascii=False),flush=True)
+    return out
 
-    # 1. Carregar dados
-    data_path = "data/fake_recogna_limpo.csv"
-    if not os.path.exists(data_path):
-        logger.error(f"Dataset não encontrado em {data_path}. Certifique-se de executar 'dvc pull'.")
-        return
-
-    df = pd.read_csv(data_path)
-    # Supondo que a classe seja 0 para Fake e 1 para Real
-    # e as colunas sejam texto_limpo e Classe
-    # Vamos re-limpar os dados usando nosso novo módulo para sanar o skew
-    logger.info("Aplicando ml.preprocessing.limpar_texto...")
-    # O dataset bruto original (se fosse usado) estaria em Noticia, mas vamos garantir:
-    col_text = 'Noticia' if 'Noticia' in df.columns else df.columns[0]
-    col_label = 'Classe' if 'Classe' in df.columns else df.columns[-1]
-
-    # No fake_recogna_limpo, as colunas são texto_limpo e Classe
-    if 'texto_limpo' in df.columns:
-        X_raw = df['texto_limpo'].fillna('')
-    else:
-        X_raw = df[col_text].fillna('')
-
-    y = df[col_label].values
-
-    # Preprocessamento simétrico exato
-    X_clean = X_raw.apply(lambda t: limpar_texto(str(t)))
-
-    X_train, X_test, y_train, y_test = train_test_split(X_clean, y, test_size=0.2, random_state=42, stratify=y)
-
-    with mlflow.start_run():
-        logger.info("Treinando classificador Calibrated LinearSVC...")
-        
-        # Hyperparameters
-        max_features = 50000
-        c_param = 10.0
-        
-        mlflow.log_param("max_features", max_features)
-        mlflow.log_param("C", c_param)
-
-        pipeline = Pipeline([
-            ('tfidf', TfidfVectorizer(max_df=0.85, max_features=max_features, ngram_range=(1, 2))),
-            ('clf', LinearSVC(C=c_param, max_iter=2000, random_state=42))
-        ])
-
-        # Envolver no calibrador para extrair probabilidades
-        calibrated_model = CalibratedClassifierCV(pipeline, cv=5)
-        
-        # Treinamento
-        calibrated_model.fit(X_train, y_train)
-
-        # Avaliação
-        logger.info("Avaliando o modelo...")
-        y_pred = calibrated_model.predict(X_test)
-        f1 = f1_score(y_test, y_pred, average='weighted')
-        
-        mlflow.log_metric("f1_weighted", f1)
-        
-        logger.info(f"F1 Score: {f1:.4f}")
-
-        # Salvar o modelo no MLflow Model Registry
-        mlflow.sklearn.log_model(
-            sk_model=calibrated_model,
-            artifact_path="model",
-            registered_model_name="Factual_LinearSVC_Pipeline"
-        )
-        
-        logger.info("Modelo salvo e registrado com sucesso no MLflow!")
 
 if __name__ == "__main__":
-    run_training()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--data",type=Path)
+    parser.add_argument("--output",type=Path)
+    args = parser.parse_args()
+    run_training(args.data,args.output)

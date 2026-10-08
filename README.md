@@ -1,101 +1,104 @@
-# 📰 Identificador de Fake News (Motor NLP Híbrido & MLOps)
+# Verificador de notícias em português
 
-Bem-vindo ao repositório do **Identificador de Fake News**, um projeto avançado de Processamento de Linguagem Natural (NLP) focado na detecção de desinformação em textos jornalísticos e artigos da web. 
+Estado em 08/10/2026: baseline textual corrigida e protótipo local de verificação
+por evidências. Não homologado para produção; não há acurácia factual recente
+validada nem modelo novo promovido.
 
-Este projeto evoluiu de uma simples experimentação de laboratório para uma **Arquitetura de API de Produção Escalável** com foco completo em **MLOps**, Automação e Explicabilidade (XAI).
+Consulte o [registro de evolução](docs/EVOLUCAO_VERIFICADOR.md), a
+[entrega técnica](docs/ENTREGA_EVOLUCAO_2026-10-08.md) e a
+[investigação original](docs/INVESTIGACAO_MODELO_2026-10-08.md).
 
----
+## Executar localmente
 
-## 🚀 Principais Funcionalidades
+Python 3.12–3.14 é o intervalo declarado; os testes foram executados em 3.14.6.
+Instale Poetry 2.5.1 e as dependências do lock:
 
-1. **Inteligência Híbrida (Ensemble):**
-   * **Motor Factual (LinearSVC):** Treinado e calibrado em bases de dados brasileiras (*FakeRecogna*), analisa a distribuição matemática TF-IDF do texto para detectar padrões de mentira ou boato.
-   * **Motor de Viés (mDeBERTa-v3):** Um modelo de Hugging Face *Zero-Shot* que avalia se a escrita apela para sensacionalismo ou se mantém uma linguagem jornalística neutra.
+~~~bash
+poetry install --without bias
+poetry run python -m nltk.downloader -d .cache/nltk_data stopwords
+NLTK_DATA=.cache/nltk_data poetry run uvicorn api.main:app --host 127.0.0.1 --port 8000
+~~~
 
-2. **Explicabilidade Matemática (XAI Livre de Alucinação):**
-   * Sem o uso de IA Generativa (ChatGPT/LLMs), o motor *ExplainabilityEngine* intercepta os coeficientes vetoriais que a máquina gerou. Ele aponta com exatidão matemática quais as palavras que tornaram a notícia *Fake* ou *Verdadeira*, gerando a janela de análise detalhada exigida pelo Front-end.
+O download explícito de stopwords acima provisiona somente o classificador legado.
+O startup não baixa pesos ou dados e não desabilita TLS. A rota /v2/verificar funciona
+independentemente desse classificador; /ready mede a prontidão do componente
+textual legado. /health informa separadamente classificador, tom e validação factual.
 
-3. **Governança e MLOps 100% Integrados:**
-   * **DVC & MLflow:** Versionamento inteligente de bases de treino e registros de modelos matemáticos.
-   * **Continuous Training (CRON):** Rotina `retrain_cron.py` que ouve o *feedback* da comunidade (via BD) e retreina a Inteligência Artificial automaticamente.
-   * **Data Drift (`drift_monitor.py`):** Monitora em tempo real se a estrutura linguística das Fake News modernas está escapando do padrão aprendido no laboratório original, emitindo relatórios via *Evidently AI*.
+Tom via mDeBERTa é opcional (grupo bias e ENABLE_BIAS_MODEL=1), exige os pesos
+da revisão fixada disponíveis localmente e não participa do parecer factual.
 
-4. **Extração Web Autônoma e Cache:**
-   * Basta enviar uma URL. O sistema extrai o texto principal descartando menus e banners (*newspaper3k*), e grava inferências idênticas em um cache no PostgreSQL/SQLite.
+## API para o frontend
 
----
+POST /analisar-url continua ativo, sem marca de depreciação, e mantém todos os
+campos originais obrigatórios na raiz. O frontend existente não precisa migrar.
 
-## 🏗️ Estrutura do Projeto
+POST /v2/analisar-url recebe somente url como entrada obrigatória e retorna
+os mesmos campos (prob_fake, taxa_confiabilidade, janela_analise, listas etc.),
+com o parecer factual separado no objeto verificacao. Busca configurada é
+tentada por padrão nessa nova rota; sem provedor há aviso e abstenção.
+Nenhum corpo/metadado deve ser preenchido manualmente para analisar um link.
 
-```text
-identificador-de-fake-news/
-├── api/                   # Aplicação web (FastAPI, rotas, banco de dados, schemas)
-├── ml/                    # Lógica do Machine Learning (Treino, Inferência, XAI, MLOps)
-├── scraper/               # Motor de web scraping de notícias
-├── models/                # Artefatos serilizados do Scikit-Learn (.joblib)
-├── docs/                  # ROADMAP MLOps e guias de arquitetura
-├── docker-compose.yml     # Orquestrador de contêineres de produção
-└── Dockerfile             # Imagem encapsulada com pré-download de Hugging Face
-```
+Veja o [contrato do frontend](docs/CONTRATO_FRONTEND_API.md), com entrada mínima,
+tipos, tratamento de erros e diferenças de persistência/feedback. A nova rota
+compatível requer o classificador textual, para não fabricar campos numéricos.
 
----
+## API detalhada de evidências — auditoria
 
-## 💻 Como Rodar a API (via Docker)
+POST /v2/verificar recebe document ou url, exclusivamente. Exemplo local sem
+fontes — intencionalmente inconclusivo:
 
-Não é necessário instalar bibliotecas pesadas de Python localmente. Tudo já foi conteinerizado para o máximo desempenho de isolamento.
-
-1. **Clone este repositório:**
-   ```bash
-   git clone https://github.com/SEU_USUARIO/identificador-de-fake-news.git
-   cd identificador-de-fake-news
-   ```
-
-2. **Inicie o servidor via Docker Compose:**
-   ```bash
-   docker-compose up -d --build
-   ```
-   > *Nota: O primeiro `build` fará o pré-download dos modelos do Hugging Face para dentro do contêiner, o que pode levar alguns minutos (otimização de Cold-Start).*
-
-3. **Acesse a Documentação (Swagger):**
-   Acesse no seu navegador: `http://localhost:8000/docs`
-
----
-
-## 📡 Utilização da API (Exemplo)
-
-Envie uma requisição HTTP **POST** para `/analisar-url`:
-
-```json
+~~~json
 {
-  "url": "https://g1.globo.com/exemplo-de-noticia.ghtml"
-}
-```
-
-O servidor extrai, classifica e exibe toda a auditoria transparente na resposta:
-
-```json
-{
-  "url": "https://g1.globo.com/exemplo-de-noticia.ghtml",
-  "prob_fake": 0.12,
-  "taxa_confiabilidade": 88.0,
-  "janela_analise": {
-    "evidencia": "A análise lexical sugere forte alinhamento com reportagens factuais.",
-    "qualidade_da_fonte": "O domínio g1.globo.com é reconhecido como veículo oficial.",
-    "corroboracao": "A linguagem parece neutra.",
-    "contexto": "A notícia analisada possui 450 palavras processadas.",
-    "atualidade": "Requer validação temporal estática externa."
+  "document": {
+    "title": "Boletim municipal",
+    "body": "A prefeitura registrou 82 casos em 06/10/2026.",
+    "language": "pt"
   },
-  "o_que_sustenta": [
-    "Linguagem consistente: repórter",
-    "Linguagem consistente: confirmou"
-  ],
-  "modelos_usados": ["LinearSVC (BR)", "mDeBERTa-v3 (Zero-Shot)"]
+  "evidence_urls": [],
+  "reference_date": "2026-10-08",
+  "search": false
 }
-```
+~~~
 
----
+As URLs de notícia/evidências devem ser HTTPS públicas. Há até cinco fontes e
+12 alegações por requisição. As conclusões são sustentada, refutada,
+evidencias_conflitantes ou evidencia_insuficiente. Cada evidência traz URL,
+trecho, publicação/atualização quando disponíveis, acesso e hash.
+confidence é null: similaridade lexical não é probabilidade factual.
 
-## 🤝 Voto Comunitário (Melhoria Contínua)
-A API suporta receber auditoria humana via `POST /votar`, onde votos conflitantes geram retreino semanal automático das predições do modelo.
+Forneça URLs reais em evidence_urls. Busca automática é opt-in (search=true),
+via uma instância SearxNG HTTPS configurada em SEARXNG_BASE_URL; sem configuração
+o sistema avisa e usa apenas as URLs fornecidas. Queries saem para essa instância:
+não envie conteúdo sensível sem avaliar a política do provedor. A integração
+foi testada com fixtures; uma instância real de busca ainda não foi homologada.
 
-> O roadmap completo das fases de MLOps encontra-se na pasta `docs/ROADMAP_MLOPS.md`.
+O endpoint /analisar-url permanece ativo com o contrato original:
+prob_fake e taxa_confiabilidade são scores textuais históricos, não verdade
+ou confiança factual. O cache legado tem TTL; o cache v2 usa conteúdo, fontes,
+data de referência e versão, com TTL de cinco minutos. Fontes são baixadas
+novamente antes de reutilizar um resultado v2.
+
+POST /votar recebe feedback não revisado. Retreino automático a partir de votos
+foi desativado para impedir contaminação e alteração do corpus de referência.
+
+## Validar e gerar candidatos
+
+~~~bash
+poetry run python -m pytest -q
+poetry run python -m ml.train
+poetry run python -m scripts.validate_evolution --candidate models/candidates/candidate-20261008T195757552426Z
+~~~
+
+O treino gera um diretório novo em models/candidates, com manifesto, hashes,
+splits e resultados. Nunca sobrescreve os dois modelos de referência.
+Somente artefatos locais confiáveis podem ser carregados (joblib utiliza pickle).
+
+O script opt-in python -m scripts.live_verification acessa duas notícias públicas
+de outubro de 2026 e registra extração/API reais. Não é um teste cego nem mede
+qualidade factual. Os dez exemplos locais do outro script são sintéticos.
+
+Dockerfile e lock foram alinhados para startup offline sem o modelo de tom.
+A imagem ainda não foi construída/testada: o daemon Docker local está indisponível.
+docker compose up não deve ser interpretado como aprovação para deploy público.
+Autenticação, rate limiting distribuído, revisão humana, monitoramento moderno,
+avaliação independente e homologação/carga seguem pendentes.

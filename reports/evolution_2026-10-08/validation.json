@@ -1,0 +1,1021 @@
+{
+  "reference_artifacts_unchanged": {
+    "models/best_linearsvc_model.joblib": true,
+    "models/calibrated_pipeline.joblib": true,
+    "fake_recogna_limpo.csv": true,
+    "data/fake_recogna_limpo.csv": true,
+    "notebooks/v2_pipeline_linearsvc/data/processed/train.csv": true,
+    "notebooks/v2_pipeline_linearsvc/data/processed/test_holdout.csv": true
+  },
+  "candidate": "models/candidates/candidate-20261008T195757552426Z",
+  "historical_confusion_matrix_rows_true_cols_prediction": [
+    [
+      905,
+      63
+    ],
+    [
+      64,
+      1210
+    ]
+  ],
+  "label_order": [
+    "FAKE",
+    "REAL"
+  ],
+  "recent_factual_quality_metrics": null,
+  "local_latency_ms": {
+    "p50": 0.5653329999404377,
+    "p95": 10.433384900625224,
+    "p99": 16.74290978104182,
+    "n": 10,
+    "scope": "synthetic in-process rules + candidate; excludes HTTP, retrieval, DB, concurrency; not SLA"
+  },
+  "examples": [
+    {
+      "case": "corroboração controlada",
+      "scope": "synthetic fixtures; not real news or external quality validation",
+      "input": "A prefeitura registrou 82 casos em 06/10/2026.",
+      "result": {
+        "system_version": "evidence-rules-v0.2.0",
+        "document": {
+          "title": "",
+          "body": "A prefeitura registrou 82 casos em 06/10/2026.",
+          "language": "pt",
+          "source_url": null,
+          "published_at": null,
+          "updated_at": null,
+          "event_date": null,
+          "date_provenance": {},
+          "fetched_at": "2026-10-08T20:18:58.405237Z"
+        },
+        "reference_date": "2026-10-08",
+        "results": [
+          {
+            "claim": {
+              "id": "b7149bb85c721577",
+              "text": "A prefeitura registrou 82 casos em 06/10/2026.",
+              "event_date": "2026-10-06",
+              "checkable": true,
+              "limitations": []
+            },
+            "verdict": "sustentada",
+            "confidence": null,
+            "confidence_kind": "indisponivel_sem_validacao_externa",
+            "evidence": [
+              {
+                "id": "3cc172a11db491d5",
+                "claim_id": "b7149bb85c721577",
+                "url": "https://a.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405200Z",
+                "content_hash": "57aa3f3d8e19fcb2bb8edbeb2fd6314266f82203b1b97d2bba749a151479e9b2",
+                "origin_group": "a.example",
+                "provider": "download_https",
+                "relation": "sustenta",
+                "relevance_score": 1.0,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              },
+              {
+                "id": "32d8152b68003649",
+                "claim_id": "b7149bb85c721577",
+                "url": "https://b.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405218Z",
+                "content_hash": "2698e265040686a1ba7c30de1e3f983a7c51841b5ff200a76aa665965d94569a",
+                "origin_group": "b.example",
+                "provider": "download_https",
+                "relation": "sustenta",
+                "relevance_score": 1.0,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              }
+            ],
+            "rationale": "Regra conservadora: 2 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
+            "temporal_status": "evento_explicito",
+            "limitations": [
+              "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
+              "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
+            ]
+          }
+        ],
+        "summary": {
+          "sustentada": 1,
+          "refutada": 0,
+          "evidencias_conflitantes": 0,
+          "evidencia_insuficiente": 0
+        },
+        "partial": false,
+        "limitations": [
+          "Protótipo de regras, sem validação externa recente ou confiança factual calibrada.",
+          "Metadados e trechos de sites podem estar incorretos; não há autenticação editorial.",
+          "Deduplicação por domínio/conteúdo não detecta todas as republicações."
+        ],
+        "retrieval_status": "provided_urls",
+        "latency_ms": 11.786,
+        "cache_hit": false,
+        "auxiliary": {}
+      },
+      "auxiliary": {
+        "model_version": "candidate-20261008T195757552426Z",
+        "score_textual_fake": 0.2625883346229331,
+        "score_kind": "similaridade_textual_calibrada_no_corpus_historico",
+        "confianca_factual": null,
+        "production_approved": false
+      }
+    },
+    {
+      "case": "quantidade alterada",
+      "scope": "synthetic fixtures; not real news or external quality validation",
+      "input": "A prefeitura registrou 8200 casos em 06/10/2026.",
+      "result": {
+        "system_version": "evidence-rules-v0.2.0",
+        "document": {
+          "title": "",
+          "body": "A prefeitura registrou 8200 casos em 06/10/2026.",
+          "language": "pt",
+          "source_url": null,
+          "published_at": null,
+          "updated_at": null,
+          "event_date": null,
+          "date_provenance": {},
+          "fetched_at": "2026-10-08T20:18:58.423615Z"
+        },
+        "reference_date": "2026-10-08",
+        "results": [
+          {
+            "claim": {
+              "id": "2e97820a3219e783",
+              "text": "A prefeitura registrou 8200 casos em 06/10/2026.",
+              "event_date": "2026-10-06",
+              "checkable": true,
+              "limitations": []
+            },
+            "verdict": "refutada",
+            "confidence": null,
+            "confidence_kind": "indisponivel_sem_validacao_externa",
+            "evidence": [
+              {
+                "id": "3cc172a11db491d5",
+                "claim_id": "2e97820a3219e783",
+                "url": "https://a.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405200Z",
+                "content_hash": "57aa3f3d8e19fcb2bb8edbeb2fd6314266f82203b1b97d2bba749a151479e9b2",
+                "origin_group": "a.example",
+                "provider": "download_https",
+                "relation": "refuta",
+                "relevance_score": 0.75,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              },
+              {
+                "id": "32d8152b68003649",
+                "claim_id": "2e97820a3219e783",
+                "url": "https://b.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405218Z",
+                "content_hash": "2698e265040686a1ba7c30de1e3f983a7c51841b5ff200a76aa665965d94569a",
+                "origin_group": "b.example",
+                "provider": "download_https",
+                "relation": "refuta",
+                "relevance_score": 0.75,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              }
+            ],
+            "rationale": "Regra conservadora: 0 origem(ns) compatível(is), 2 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
+            "temporal_status": "evento_explicito",
+            "limitations": [
+              "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
+              "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
+            ]
+          }
+        ],
+        "summary": {
+          "sustentada": 0,
+          "refutada": 1,
+          "evidencias_conflitantes": 0,
+          "evidencia_insuficiente": 0
+        },
+        "partial": false,
+        "limitations": [
+          "Protótipo de regras, sem validação externa recente ou confiança factual calibrada.",
+          "Metadados e trechos de sites podem estar incorretos; não há autenticação editorial.",
+          "Deduplicação por domínio/conteúdo não detecta todas as republicações."
+        ],
+        "retrieval_status": "provided_urls",
+        "latency_ms": 0.252,
+        "cache_hit": false,
+        "auxiliary": {}
+      },
+      "auxiliary": {
+        "model_version": "candidate-20261008T195757552426Z",
+        "score_textual_fake": 0.2625883346229331,
+        "score_kind": "similaridade_textual_calibrada_no_corpus_historico",
+        "confianca_factual": null,
+        "production_approved": false
+      }
+    },
+    {
+      "case": "negação alterada",
+      "scope": "synthetic fixtures; not real news or external quality validation",
+      "input": "A prefeitura não registrou 82 casos em 06/10/2026.",
+      "result": {
+        "system_version": "evidence-rules-v0.2.0",
+        "document": {
+          "title": "",
+          "body": "A prefeitura não registrou 82 casos em 06/10/2026.",
+          "language": "pt",
+          "source_url": null,
+          "published_at": null,
+          "updated_at": null,
+          "event_date": null,
+          "date_provenance": {},
+          "fetched_at": "2026-10-08T20:18:58.424428Z"
+        },
+        "reference_date": "2026-10-08",
+        "results": [
+          {
+            "claim": {
+              "id": "0f1e4d1de3a91389",
+              "text": "A prefeitura não registrou 82 casos em 06/10/2026.",
+              "event_date": "2026-10-06",
+              "checkable": true,
+              "limitations": []
+            },
+            "verdict": "refutada",
+            "confidence": null,
+            "confidence_kind": "indisponivel_sem_validacao_externa",
+            "evidence": [
+              {
+                "id": "3cc172a11db491d5",
+                "claim_id": "0f1e4d1de3a91389",
+                "url": "https://a.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405200Z",
+                "content_hash": "57aa3f3d8e19fcb2bb8edbeb2fd6314266f82203b1b97d2bba749a151479e9b2",
+                "origin_group": "a.example",
+                "provider": "download_https",
+                "relation": "refuta",
+                "relevance_score": 0.875,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              },
+              {
+                "id": "32d8152b68003649",
+                "claim_id": "0f1e4d1de3a91389",
+                "url": "https://b.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405218Z",
+                "content_hash": "2698e265040686a1ba7c30de1e3f983a7c51841b5ff200a76aa665965d94569a",
+                "origin_group": "b.example",
+                "provider": "download_https",
+                "relation": "refuta",
+                "relevance_score": 0.875,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              }
+            ],
+            "rationale": "Regra conservadora: 0 origem(ns) compatível(is), 2 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
+            "temporal_status": "evento_explicito",
+            "limitations": [
+              "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
+              "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
+            ]
+          }
+        ],
+        "summary": {
+          "sustentada": 0,
+          "refutada": 1,
+          "evidencias_conflitantes": 0,
+          "evidencia_insuficiente": 0
+        },
+        "partial": false,
+        "limitations": [
+          "Protótipo de regras, sem validação externa recente ou confiança factual calibrada.",
+          "Metadados e trechos de sites podem estar incorretos; não há autenticação editorial.",
+          "Deduplicação por domínio/conteúdo não detecta todas as republicações."
+        ],
+        "retrieval_status": "provided_urls",
+        "latency_ms": 0.134,
+        "cache_hit": false,
+        "auxiliary": {}
+      },
+      "auxiliary": {
+        "model_version": "candidate-20261008T195757552426Z",
+        "score_textual_fake": 0.5703728689454277,
+        "score_kind": "similaridade_textual_calibrada_no_corpus_historico",
+        "confianca_factual": null,
+        "production_approved": false
+      }
+    },
+    {
+      "case": "conflito",
+      "scope": "synthetic fixtures; not real news or external quality validation",
+      "input": "A prefeitura registrou 82 casos em 06/10/2026.",
+      "result": {
+        "system_version": "evidence-rules-v0.2.0",
+        "document": {
+          "title": "",
+          "body": "A prefeitura registrou 82 casos em 06/10/2026.",
+          "language": "pt",
+          "source_url": null,
+          "published_at": null,
+          "updated_at": null,
+          "event_date": null,
+          "date_provenance": {},
+          "fetched_at": "2026-10-08T20:18:58.425058Z"
+        },
+        "reference_date": "2026-10-08",
+        "results": [
+          {
+            "claim": {
+              "id": "b7149bb85c721577",
+              "text": "A prefeitura registrou 82 casos em 06/10/2026.",
+              "event_date": "2026-10-06",
+              "checkable": true,
+              "limitations": []
+            },
+            "verdict": "evidencias_conflitantes",
+            "confidence": null,
+            "confidence_kind": "indisponivel_sem_validacao_externa",
+            "evidence": [
+              {
+                "id": "3cc172a11db491d5",
+                "claim_id": "b7149bb85c721577",
+                "url": "https://a.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405225Z",
+                "content_hash": "57aa3f3d8e19fcb2bb8edbeb2fd6314266f82203b1b97d2bba749a151479e9b2",
+                "origin_group": "a.example",
+                "provider": "download_https",
+                "relation": "sustenta",
+                "relevance_score": 1.0,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              },
+              {
+                "id": "60bf49657a08792e",
+                "claim_id": "b7149bb85c721577",
+                "url": "https://b.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 83 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405228Z",
+                "content_hash": "cc7176d1ed2b3df1ece6e3b25b5b19de0f9e44a9f4f6410485d168fc1b2dfc5b",
+                "origin_group": "b.example",
+                "provider": "download_https",
+                "relation": "refuta",
+                "relevance_score": 0.75,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              }
+            ],
+            "rationale": "Regra conservadora: 1 origem(ns) compatível(is), 1 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
+            "temporal_status": "evento_explicito",
+            "limitations": [
+              "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
+              "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
+            ]
+          }
+        ],
+        "summary": {
+          "sustentada": 0,
+          "refutada": 0,
+          "evidencias_conflitantes": 1,
+          "evidencia_insuficiente": 0
+        },
+        "partial": false,
+        "limitations": [
+          "Protótipo de regras, sem validação externa recente ou confiança factual calibrada.",
+          "Metadados e trechos de sites podem estar incorretos; não há autenticação editorial.",
+          "Deduplicação por domínio/conteúdo não detecta todas as republicações."
+        ],
+        "retrieval_status": "provided_urls",
+        "latency_ms": 0.132,
+        "cache_hit": false,
+        "auxiliary": {}
+      },
+      "auxiliary": {
+        "model_version": "candidate-20261008T195757552426Z",
+        "score_textual_fake": 0.2625883346229331,
+        "score_kind": "similaridade_textual_calibrada_no_corpus_historico",
+        "confianca_factual": null,
+        "production_approved": false
+      }
+    },
+    {
+      "case": "sem evidência",
+      "scope": "synthetic fixtures; not real news or external quality validation",
+      "input": "A prefeitura registrou 82 casos em 06/10/2026.",
+      "result": {
+        "system_version": "evidence-rules-v0.2.0",
+        "document": {
+          "title": "",
+          "body": "A prefeitura registrou 82 casos em 06/10/2026.",
+          "language": "pt",
+          "source_url": null,
+          "published_at": null,
+          "updated_at": null,
+          "event_date": null,
+          "date_provenance": {},
+          "fetched_at": "2026-10-08T20:18:58.425647Z"
+        },
+        "reference_date": "2026-10-08",
+        "results": [
+          {
+            "claim": {
+              "id": "b7149bb85c721577",
+              "text": "A prefeitura registrou 82 casos em 06/10/2026.",
+              "event_date": "2026-10-06",
+              "checkable": true,
+              "limitations": []
+            },
+            "verdict": "evidencia_insuficiente",
+            "confidence": null,
+            "confidence_kind": "indisponivel_sem_validacao_externa",
+            "evidence": [],
+            "rationale": "Regra conservadora: 0 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
+            "temporal_status": "evento_explicito",
+            "limitations": [
+              "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
+              "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
+            ]
+          }
+        ],
+        "summary": {
+          "sustentada": 0,
+          "refutada": 0,
+          "evidencias_conflitantes": 0,
+          "evidencia_insuficiente": 1
+        },
+        "partial": false,
+        "limitations": [
+          "Protótipo de regras, sem validação externa recente ou confiança factual calibrada.",
+          "Metadados e trechos de sites podem estar incorretos; não há autenticação editorial.",
+          "Deduplicação por domínio/conteúdo não detecta todas as republicações."
+        ],
+        "retrieval_status": "provided_urls",
+        "latency_ms": 0.03,
+        "cache_hit": false,
+        "auxiliary": {}
+      },
+      "auxiliary": {
+        "model_version": "candidate-20261008T195757552426Z",
+        "score_textual_fake": 0.2625883346229331,
+        "score_kind": "similaridade_textual_calibrada_no_corpus_historico",
+        "confianca_factual": null,
+        "production_approved": false
+      }
+    },
+    {
+      "case": "parcial",
+      "scope": "synthetic fixtures; not real news or external quality validation",
+      "input": "A prefeitura registrou 82 casos em 06/10/2026.\nA universidade registrou 50 casos.",
+      "result": {
+        "system_version": "evidence-rules-v0.2.0",
+        "document": {
+          "title": "",
+          "body": "A prefeitura registrou 82 casos em 06/10/2026.\nA universidade registrou 50 casos.",
+          "language": "pt",
+          "source_url": null,
+          "published_at": null,
+          "updated_at": null,
+          "event_date": null,
+          "date_provenance": {},
+          "fetched_at": "2026-10-08T20:18:58.426122Z"
+        },
+        "reference_date": "2026-10-08",
+        "results": [
+          {
+            "claim": {
+              "id": "b7149bb85c721577",
+              "text": "A prefeitura registrou 82 casos em 06/10/2026.",
+              "event_date": "2026-10-06",
+              "checkable": true,
+              "limitations": []
+            },
+            "verdict": "sustentada",
+            "confidence": null,
+            "confidence_kind": "indisponivel_sem_validacao_externa",
+            "evidence": [
+              {
+                "id": "3cc172a11db491d5",
+                "claim_id": "b7149bb85c721577",
+                "url": "https://a.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405200Z",
+                "content_hash": "57aa3f3d8e19fcb2bb8edbeb2fd6314266f82203b1b97d2bba749a151479e9b2",
+                "origin_group": "a.example",
+                "provider": "download_https",
+                "relation": "sustenta",
+                "relevance_score": 1.0,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              },
+              {
+                "id": "32d8152b68003649",
+                "claim_id": "b7149bb85c721577",
+                "url": "https://b.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405218Z",
+                "content_hash": "2698e265040686a1ba7c30de1e3f983a7c51841b5ff200a76aa665965d94569a",
+                "origin_group": "b.example",
+                "provider": "download_https",
+                "relation": "sustenta",
+                "relevance_score": 1.0,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              }
+            ],
+            "rationale": "Regra conservadora: 2 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
+            "temporal_status": "evento_explicito",
+            "limitations": [
+              "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
+              "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
+            ]
+          },
+          {
+            "claim": {
+              "id": "9b30b13710fb0681",
+              "text": "A universidade registrou 50 casos.",
+              "event_date": null,
+              "checkable": true,
+              "limitations": []
+            },
+            "verdict": "evidencia_insuficiente",
+            "confidence": null,
+            "confidence_kind": "indisponivel_sem_validacao_externa",
+            "evidence": [],
+            "rationale": "Regra conservadora: 0 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
+            "temporal_status": "evento_nao_identificado",
+            "limitations": [
+              "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
+              "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
+            ]
+          }
+        ],
+        "summary": {
+          "sustentada": 1,
+          "refutada": 0,
+          "evidencias_conflitantes": 0,
+          "evidencia_insuficiente": 1
+        },
+        "partial": true,
+        "limitations": [
+          "Protótipo de regras, sem validação externa recente ou confiança factual calibrada.",
+          "Metadados e trechos de sites podem estar incorretos; não há autenticação editorial.",
+          "Deduplicação por domínio/conteúdo não detecta todas as republicações."
+        ],
+        "retrieval_status": "provided_urls",
+        "latency_ms": 0.175,
+        "cache_hit": false,
+        "auxiliary": {}
+      },
+      "auxiliary": {
+        "model_version": "candidate-20261008T195757552426Z",
+        "score_textual_fake": 0.2107008221155846,
+        "score_kind": "similaridade_textual_calibrada_no_corpus_historico",
+        "confianca_factual": null,
+        "production_approved": false
+      }
+    },
+    {
+      "case": "clickbait",
+      "scope": "synthetic fixtures; not real news or external quality validation",
+      "input": "Será que a prefeitura registrou 82 casos?",
+      "result": {
+        "system_version": "evidence-rules-v0.2.0",
+        "document": {
+          "title": "",
+          "body": "Será que a prefeitura registrou 82 casos?",
+          "language": "pt",
+          "source_url": null,
+          "published_at": null,
+          "updated_at": null,
+          "event_date": null,
+          "date_provenance": {},
+          "fetched_at": "2026-10-08T20:18:58.426747Z"
+        },
+        "reference_date": "2026-10-08",
+        "results": [
+          {
+            "claim": {
+              "id": "87e910c92bf14e04",
+              "text": "Será que a prefeitura registrou 82 casos?",
+              "event_date": null,
+              "checkable": false,
+              "limitations": [
+                "Extração heurística não confirma uma alegação factual autônoma."
+              ]
+            },
+            "verdict": "evidencia_insuficiente",
+            "confidence": null,
+            "confidence_kind": "indisponivel_sem_validacao_externa",
+            "evidence": [
+              {
+                "id": "3cc172a11db491d5",
+                "claim_id": "87e910c92bf14e04",
+                "url": "https://a.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405200Z",
+                "content_hash": "57aa3f3d8e19fcb2bb8edbeb2fd6314266f82203b1b97d2bba749a151479e9b2",
+                "origin_group": "a.example",
+                "provider": "download_https",
+                "relation": "nao_conclusiva",
+                "relevance_score": 0.5555555555555556,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              },
+              {
+                "id": "32d8152b68003649",
+                "claim_id": "87e910c92bf14e04",
+                "url": "https://b.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405218Z",
+                "content_hash": "2698e265040686a1ba7c30de1e3f983a7c51841b5ff200a76aa665965d94569a",
+                "origin_group": "b.example",
+                "provider": "download_https",
+                "relation": "nao_conclusiva",
+                "relevance_score": 0.5555555555555556,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              }
+            ],
+            "rationale": "Regra conservadora: 0 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
+            "temporal_status": "evento_nao_identificado",
+            "limitations": [
+              "Extração heurística não confirma uma alegação factual autônoma.",
+              "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
+              "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
+            ]
+          }
+        ],
+        "summary": {
+          "sustentada": 0,
+          "refutada": 0,
+          "evidencias_conflitantes": 0,
+          "evidencia_insuficiente": 1
+        },
+        "partial": false,
+        "limitations": [
+          "Protótipo de regras, sem validação externa recente ou confiança factual calibrada.",
+          "Metadados e trechos de sites podem estar incorretos; não há autenticação editorial.",
+          "Deduplicação por domínio/conteúdo não detecta todas as republicações."
+        ],
+        "retrieval_status": "provided_urls",
+        "latency_ms": 0.116,
+        "cache_hit": false,
+        "auxiliary": {}
+      },
+      "auxiliary": {
+        "model_version": "candidate-20261008T195757552426Z",
+        "score_textual_fake": 0.31784456605158473,
+        "score_kind": "similaridade_textual_calibrada_no_corpus_historico",
+        "confianca_factual": null,
+        "production_approved": false
+      }
+    },
+    {
+      "case": "sátira",
+      "scope": "synthetic fixtures; not real news or external quality validation",
+      "input": "Sátira: a prefeitura registrou 82 casos.",
+      "result": {
+        "system_version": "evidence-rules-v0.2.0",
+        "document": {
+          "title": "",
+          "body": "Sátira: a prefeitura registrou 82 casos.",
+          "language": "pt",
+          "source_url": null,
+          "published_at": null,
+          "updated_at": null,
+          "event_date": null,
+          "date_provenance": {},
+          "fetched_at": "2026-10-08T20:18:58.427312Z"
+        },
+        "reference_date": "2026-10-08",
+        "results": [
+          {
+            "claim": {
+              "id": "0d8ab96c5a14f65b",
+              "text": "Sátira: a prefeitura registrou 82 casos.",
+              "event_date": null,
+              "checkable": false,
+              "limitations": [
+                "Atribuição, referência ambígua ou modalidade exige revisão humana.",
+                "Trecho truncado ou artigo com marcador de sátira; revisão obrigatória.",
+                "Extração heurística não confirma uma alegação factual autônoma."
+              ]
+            },
+            "verdict": "evidencia_insuficiente",
+            "confidence": null,
+            "confidence_kind": "indisponivel_sem_validacao_externa",
+            "evidence": [
+              {
+                "id": "3cc172a11db491d5",
+                "claim_id": "0d8ab96c5a14f65b",
+                "url": "https://a.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405200Z",
+                "content_hash": "57aa3f3d8e19fcb2bb8edbeb2fd6314266f82203b1b97d2bba749a151479e9b2",
+                "origin_group": "a.example",
+                "provider": "download_https",
+                "relation": "nao_conclusiva",
+                "relevance_score": 0.625,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              },
+              {
+                "id": "32d8152b68003649",
+                "claim_id": "0d8ab96c5a14f65b",
+                "url": "https://b.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405218Z",
+                "content_hash": "2698e265040686a1ba7c30de1e3f983a7c51841b5ff200a76aa665965d94569a",
+                "origin_group": "b.example",
+                "provider": "download_https",
+                "relation": "nao_conclusiva",
+                "relevance_score": 0.625,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              }
+            ],
+            "rationale": "Regra conservadora: 0 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
+            "temporal_status": "evento_nao_identificado",
+            "limitations": [
+              "Atribuição, referência ambígua ou modalidade exige revisão humana.",
+              "Trecho truncado ou artigo com marcador de sátira; revisão obrigatória.",
+              "Extração heurística não confirma uma alegação factual autônoma.",
+              "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
+              "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
+            ]
+          }
+        ],
+        "summary": {
+          "sustentada": 0,
+          "refutada": 0,
+          "evidencias_conflitantes": 0,
+          "evidencia_insuficiente": 1
+        },
+        "partial": false,
+        "limitations": [
+          "Protótipo de regras, sem validação externa recente ou confiança factual calibrada.",
+          "Metadados e trechos de sites podem estar incorretos; não há autenticação editorial.",
+          "Deduplicação por domínio/conteúdo não detecta todas as republicações."
+        ],
+        "retrieval_status": "provided_urls",
+        "latency_ms": 0.101,
+        "cache_hit": false,
+        "auxiliary": {}
+      },
+      "auxiliary": {
+        "model_version": "candidate-20261008T195757552426Z",
+        "score_textual_fake": 0.3171827402767704,
+        "score_kind": "similaridade_textual_calibrada_no_corpus_historico",
+        "confianca_factual": null,
+        "production_approved": false
+      }
+    },
+    {
+      "case": "antiga",
+      "scope": "synthetic fixtures; not real news or external quality validation",
+      "input": "A prefeitura registrou 82 casos.",
+      "result": {
+        "system_version": "evidence-rules-v0.2.0",
+        "document": {
+          "title": "",
+          "body": "A prefeitura registrou 82 casos.",
+          "language": "pt",
+          "source_url": null,
+          "published_at": null,
+          "updated_at": null,
+          "event_date": null,
+          "date_provenance": {},
+          "fetched_at": "2026-10-08T20:18:58.427863Z"
+        },
+        "reference_date": "2026-10-08",
+        "results": [
+          {
+            "claim": {
+              "id": "866f97438293e6ae",
+              "text": "A prefeitura registrou 82 casos.",
+              "event_date": null,
+              "checkable": true,
+              "limitations": []
+            },
+            "verdict": "evidencia_insuficiente",
+            "confidence": null,
+            "confidence_kind": "indisponivel_sem_validacao_externa",
+            "evidence": [
+              {
+                "id": "7cd7aebc4251c38a",
+                "claim_id": "866f97438293e6ae",
+                "url": "https://a.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos.",
+                "published_at": "2020-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405231Z",
+                "content_hash": "e375466a62ffe594e13f295982f658ad0c2223f772b7ef8073a4bc173ea78ee7",
+                "origin_group": "a.example",
+                "provider": "download_https",
+                "relation": "nao_conclusiva",
+                "relevance_score": 1.0,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": [
+                  "Fonte antiga sem data do evento explícita."
+                ]
+              }
+            ],
+            "rationale": "Regra conservadora: 0 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
+            "temporal_status": "evento_nao_identificado",
+            "limitations": [
+              "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
+              "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
+            ]
+          }
+        ],
+        "summary": {
+          "sustentada": 0,
+          "refutada": 0,
+          "evidencias_conflitantes": 0,
+          "evidencia_insuficiente": 1
+        },
+        "partial": false,
+        "limitations": [
+          "Protótipo de regras, sem validação externa recente ou confiança factual calibrada.",
+          "Metadados e trechos de sites podem estar incorretos; não há autenticação editorial.",
+          "Deduplicação por domínio/conteúdo não detecta todas as republicações."
+        ],
+        "retrieval_status": "provided_urls",
+        "latency_ms": 0.068,
+        "cache_hit": false,
+        "auxiliary": {}
+      },
+      "auxiliary": {
+        "model_version": "candidate-20261008T195757552426Z",
+        "score_textual_fake": 0.23024592967368906,
+        "score_kind": "similaridade_textual_calibrada_no_corpus_historico",
+        "confianca_factual": null,
+        "production_approved": false
+      }
+    },
+    {
+      "case": "cópias",
+      "scope": "synthetic fixtures; not real news or external quality validation",
+      "input": "A prefeitura registrou 82 casos em 06/10/2026.",
+      "result": {
+        "system_version": "evidence-rules-v0.2.0",
+        "document": {
+          "title": "",
+          "body": "A prefeitura registrou 82 casos em 06/10/2026.",
+          "language": "pt",
+          "source_url": null,
+          "published_at": null,
+          "updated_at": null,
+          "event_date": null,
+          "date_provenance": {},
+          "fetched_at": "2026-10-08T20:18:58.428366Z"
+        },
+        "reference_date": "2026-10-08",
+        "results": [
+          {
+            "claim": {
+              "id": "b7149bb85c721577",
+              "text": "A prefeitura registrou 82 casos em 06/10/2026.",
+              "event_date": "2026-10-06",
+              "checkable": true,
+              "limitations": []
+            },
+            "verdict": "evidencia_insuficiente",
+            "confidence": null,
+            "confidence_kind": "indisponivel_sem_validacao_externa",
+            "evidence": [
+              {
+                "id": "3cc172a11db491d5",
+                "claim_id": "b7149bb85c721577",
+                "url": "https://a.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405233Z",
+                "content_hash": "57aa3f3d8e19fcb2bb8edbeb2fd6314266f82203b1b97d2bba749a151479e9b2",
+                "origin_group": "a.example",
+                "provider": "download_https",
+                "relation": "sustenta",
+                "relevance_score": 1.0,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              },
+              {
+                "id": "32d8152b68003649",
+                "claim_id": "b7149bb85c721577",
+                "url": "https://b.example/boletim",
+                "title": "Fixture sintética",
+                "excerpt": "A prefeitura registrou 82 casos em 06/10/2026.",
+                "published_at": "2026-10-07T00:00:00Z",
+                "updated_at": null,
+                "date_provenance": {},
+                "accessed_at": "2026-10-08T20:18:58.405235Z",
+                "content_hash": "57aa3f3d8e19fcb2bb8edbeb2fd6314266f82203b1b97d2bba749a151479e9b2",
+                "origin_group": "b.example",
+                "provider": "download_https",
+                "relation": "sustenta",
+                "relevance_score": 1.0,
+                "score_kind": "similaridade_lexical_nao_calibrada",
+                "limitations": []
+              }
+            ],
+            "rationale": "Regra conservadora: 1 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
+            "temporal_status": "evento_explicito",
+            "limitations": [
+              "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
+              "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
+            ]
+          }
+        ],
+        "summary": {
+          "sustentada": 0,
+          "refutada": 0,
+          "evidencias_conflitantes": 0,
+          "evidencia_insuficiente": 1
+        },
+        "partial": false,
+        "limitations": [
+          "Protótipo de regras, sem validação externa recente ou confiança factual calibrada.",
+          "Metadados e trechos de sites podem estar incorretos; não há autenticação editorial.",
+          "Deduplicação por domínio/conteúdo não detecta todas as republicações."
+        ],
+        "retrieval_status": "provided_urls",
+        "latency_ms": 0.11,
+        "cache_hit": false,
+        "auxiliary": {}
+      },
+      "auxiliary": {
+        "model_version": "candidate-20261008T195757552426Z",
+        "score_textual_fake": 0.2625883346229331,
+        "score_kind": "similaridade_textual_calibrada_no_corpus_historico",
+        "confianca_factual": null,
+        "production_approved": false
+      }
+    }
+  ]
+}

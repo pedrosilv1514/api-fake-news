@@ -1,0 +1,13 @@
+.git
+.venv
+.cache
+__pycache__
+**/__pycache__
+.pytest_cache
+*.db
+*.csv
+data
+reports
+tests
+models/candidates
+*.ipynb

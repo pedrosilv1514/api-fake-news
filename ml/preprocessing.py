@@ -1,49 +1,41 @@
+"""Versioned preprocessing: preserve facts for new models; keep legacy serving stable."""
 import re
-import logging
-import nltk
+import unicodedata
+from functools import lru_cache
 
-logger = logging.getLogger(__name__)
+PREPROCESSING_VERSION = "facts-v2"
+LEGACY_PREPROCESSING_VERSION = "legacy-v1"
 
-# Garantir que as stopwords estejam disponíveis no ambiente
-try:
-    from nltk.corpus import stopwords
-    stopwords_pt = set(stopwords.words("portuguese"))
-except LookupError:
-    logger.info("Baixando NLTK stopwords...")
-    import ssl
-    try:
-        _create_unverified_https_context = ssl._create_unverified_context
-    except AttributeError:
-        pass
-    else:
-        ssl._create_default_https_context = _create_unverified_https_context
-        
-    nltk.download("stopwords", quiet=True)
-    from nltk.corpus import stopwords
-    stopwords_pt = set(stopwords.words("portuguese"))
 
-def limpar_texto(texto: str) -> str:
-    """
-    Higieniza o texto bruto para que fique idêntico ao formato 
-    que o modelo LinearSVC + TF-IDF encontrou durante o treinamento.
-    """
+def normalizar_texto(texto: str) -> str:
+    """Preserve negation, quantities, units and dates; no downloads or stemming."""
     if not isinstance(texto, str):
         return ""
-
-    # A. Converter para minúsculas
-    texto = texto.lower()
-
-    # B. Substituir URLs por um token reservado
+    texto = unicodedata.normalize("NFC", texto).lower()
     texto = re.sub(r"https?://\S+|www\.\S+", " urltoken ", texto)
+    return re.sub(r"\s+", " ", texto).strip()
 
-    # C. Remover caracteres especiais e números (mantendo letras com acento)
+
+def compor_texto(titulo: str, corpo: str) -> str:
+    """The same title/body contract is used inside training and new inference."""
+    titulo, corpo = titulo.strip(), corpo.strip()
+    return f"{titulo}\n{corpo}".strip() if titulo and not corpo.startswith(titulo) else corpo or titulo
+
+
+@lru_cache(maxsize=1)
+def _legacy_stopwords():
+    from nltk.corpus import stopwords
+    try:
+        return set(stopwords.words("portuguese"))
+    except LookupError as exc:
+        raise RuntimeError("NLTK stopwords ausentes. Instale-as no build; runtime não faz downloads.") from exc
+
+
+def limpar_texto(texto: str) -> str:
+    """Only for the frozen legacy artifact. Do not use in new training."""
+    if not isinstance(texto, str):
+        return ""
+    texto = re.sub(r"https?://\S+|www\.\S+", " urltoken ", texto.lower())
     texto = re.sub(r"[^a-zA-Záàâãéèêíïóôõöúçñ\s]", " ", texto)
-
-    # D. Tokenização por espaço e remoção de stopwords
-    palavras = texto.split()
-    palavras_limpas = [
-        word for word in palavras if word not in stopwords_pt and len(word) > 2
-    ]
-
-    # E. Reagrupar texto
-    return " ".join(palavras_limpas)
+    stopwords = _legacy_stopwords()
+    return " ".join(w for w in texto.split() if w not in stopwords and len(w) > 2)

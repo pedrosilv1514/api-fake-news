@@ -1,0 +1,62 @@
+{
+  "version": "candidate-20261008T194332550409Z",
+  "status": "candidate_not_promoted",
+  "preprocessing_version": "facts-v2",
+  "input_contract": "title + body",
+  "label_mapping": {
+    "0": "FAKE",
+    "1": "REAL"
+  },
+  "fake_label": 0,
+  "source_sha256": "41958423ae1da108db90754191751c2739b839c4423b399358cdbabe51f13e87",
+  "model_sha256": "556cbbca1d0e93286c63ce30c89dc32cacb8a649ae38b558fc9ef6310719cd60",
+  "source_quality": "Noticia in local FakeRecogna is already transformed; lost facts cannot be restored",
+  "excluded": {
+    "undated": 963,
+    "empty_body": 0,
+    "conflicting_or_duplicate_texts": 0
+  },
+  "split_info": {
+    "train_end": "2020-07-22 00:00:00",
+    "calibration_end": "2021-02-08 00:00:00",
+    "purged_rows": 8,
+    "grouping_limit": "exact body/URL and title Jaccard >=0.85 over rare-token candidates; narrative independence requires review"
+  },
+  "splits": {
+    "train": {
+      "n": 5159,
+      "from": "2012-02-09 00:00:00",
+      "to": "2020-07-22 00:00:00",
+      "classes": {
+        "0": 2862,
+        "1": 2297
+      }
+    },
+    "calibration": {
+      "n": 3530,
+      "from": "2020-07-23 00:00:00",
+      "to": "2021-02-08 00:00:00",
+      "classes": {
+        "1": 2157,
+        "0": 1373
+      }
+    },
+    "test": {
+      "n": 2242,
+      "from": "2021-02-09 00:00:00",
+      "to": "2021-09-07 00:00:00",
+      "classes": {
+        "1": 1274,
+        "0": 968
+      }
+    }
+  },
+  "versions": {
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "joblib": "1.6.0"
+  },
+  "recent_validation": false,
+  "production_approved": false
+}

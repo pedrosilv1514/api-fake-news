@@ -1,7 +1,8 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from ml.inference import engine
-from api.routers import analise
+from api.routers import analise, verificacao
+from api.middleware import BoundedBodyMiddleware
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -17,10 +18,19 @@ app = FastAPI(
 )
 
 app.include_router(analise.router)
+app.include_router(verificacao.router)
+app.add_middleware(BoundedBodyMiddleware)
 
 @app.get("/health", tags=["health"])
 async def health() -> dict:
-    return {"status": "ok", "ml_ready": engine.hf_classifier is not None}
+    return {"status": "ok", "ml_ready": engine.ready, "bias_ready": engine.hf_classifier is not None,
+            "factual_validation": "pending"}
+
+@app.get("/ready", tags=["health"])
+async def ready():
+    from fastapi.responses import JSONResponse
+    return JSONResponse({"ready": engine.ready, "component": "legacy_text_classifier"},
+                        status_code=200 if engine.ready else 503)
 
 from fastapi.responses import HTMLResponse
 

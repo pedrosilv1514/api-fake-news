@@ -28,6 +28,10 @@ class ExplainabilityEngine:
             self.classifier = self.pipeline.named_steps["clf"]
             self.feature_names = self.vectorizer.get_feature_names_out()
             self.coefs = self.classifier.coef_[0]
+            # P(class 1)=sigmoid(-a*f-b): the calibration can reverse f.
+            calibration = self.svc_model.calibrated_classifiers_[0].calibrators[0]
+            fake_index = list(self.svc_model.classes_).index(0)
+            self.fake_direction = float(calibration.a_) * (1 if fake_index == 0 else -1)
             logger.info("XAI Engine inicializado com sucesso.")
         except Exception as e:
             logger.error(f"Erro ao inicializar XAI: {e}")
@@ -55,8 +59,9 @@ class ExplainabilityEngine:
 
         try:
             # 1. Obter domínio
-            domain = urlparse(url).netloc if url else "domínio desconhecido"
-            if "globo.com" in domain or "gov.br" in domain or "uol.com.br" in domain or "estadao" in domain or "folha" in domain:
+            domain = (urlparse(url).hostname or "").lower() if url else "domínio desconhecido"
+            recognized = ("globo.com", "gov.br", "uol.com.br", "estadao.com.br", "folha.uol.com.br")
+            if any(domain == root or domain.endswith("." + root) for root in recognized):
                 qualidade_fonte = f"O domínio {domain} é tradicionalmente reconhecido como veículo de imprensa ou fonte oficial."
             else:
                 qualidade_fonte = f"O domínio {domain} requer verificação adicional, pois não está na lista principal de grande mídia ou órgãos oficiais."
@@ -80,33 +85,32 @@ class ExplainabilityEngine:
             contributions = []
             for idx in non_zero_indices:
                 word = self.feature_names[idx]
-                contrib = X[0, idx] * self.coefs[idx]
+                contrib = X[0, idx] * self.coefs[idx] * self.fake_direction
                 contributions.append((word, contrib))
                 
             contributions.sort(key=lambda x: x[1])
-            top_fake_words = [word for word, contrib in contributions[:top_k] if contrib < 0]
-            top_real_words = [word for word, contrib in contributions[-top_k:] if contrib > 0]
-            top_real_words = list(reversed(top_real_words))
+            top_fake_words = [word for word, contrib in reversed(contributions) if contrib > 0][:top_k]
+            top_real_words = [word for word, contrib in contributions if contrib < 0][:top_k]
 
             # Lógica para o que sustenta e enfraquece baseada na probabilidade
             if prob_fake >= 0.5:
                 # O modelo diz que é FAKE.
                 # Sustenta = Palavras que empurraram para Fake.
                 # Enfraquece = Palavras que empurraram para Real (Factual)
-                sustenta = [f"Uso de termos suspeitos ou urgentes: {w}" for w in top_fake_words]
-                enfraquece = [f"Presença de termos comuns: {w}" for w in top_real_words]
+                sustenta = [f"Termo associado ao rótulo FAKE no corpus: {w}" for w in top_fake_words]
+                enfraquece = [f"Termo associado ao rótulo REAL no corpus: {w}" for w in top_real_words]
                 evidencia_texto = "O algoritmo identificou forte correlação matemática com padrões de desinformação." if top_fake_words else "Alta probabilidade baseada na estrutura textual como um todo."
             else:
                 # O modelo diz que é REAL.
                 # Sustenta = Palavras que empurraram para Real.
                 # Enfraquece = Palavras que empurraram para Fake (se houver)
-                sustenta = [f"Linguagem consistente e descritiva: {w}" for w in top_real_words]
-                enfraquece = [f"Termo que gerou leve alerta: {w}" for w in top_fake_words]
+                sustenta = [f"Termo associado ao rótulo REAL no corpus: {w}" for w in top_real_words]
+                enfraquece = [f"Termo associado ao rótulo FAKE no corpus: {w}" for w in top_fake_words]
                 evidencia_texto = "A análise lexical sugere forte alinhamento com reportagens factuais e descritivas." if top_real_words else "Probabilidade baixa de manipulação."
 
-            result["janela_analise"]["evidencia"] = evidencia_texto
+            result["janela_analise"]["evidencia"] = "Correlação textual histórica, não evidência factual. " + evidencia_texto
             result["janela_analise"]["qualidade_da_fonte"] = qualidade_fonte
-            result["janela_analise"]["corroboracao"] = corroboracao
+            result["janela_analise"]["corroboracao"] = "Não verificada. Análise de tom não é corroboração factual. " + corroboracao
             result["janela_analise"]["contexto"] = contexto
             result["janela_analise"]["atualidade"] = "A ferramenta analisa apenas a escrita, portanto a atualidade dos fatos requer pesquisa manual externa."
             
@@ -115,6 +119,9 @@ class ExplainabilityEngine:
             result["o_que_nao_foi_confirmado"] = [
                 "Nomes próprios, dados estatísticos e datas presentes no texto não foram verificados contra o mundo real (sem uso de busca web)."
             ]
+            result["score_kind"] = "similaridade_textual_calibrada_no_corpus_historico"
+            result["confianca_factual"] = None
+            result["contribuicoes_textuais"] = [{"termo": term, "direcao_fake": float(value)} for term, value in contributions]
             
             return result
             
