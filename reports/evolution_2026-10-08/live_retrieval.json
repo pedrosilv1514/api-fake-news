@@ -11,14 +11,14 @@
         "updated_at": "visible Atualizado label; date precision; time/zone unavailable",
         "event_date": "not inferred from publication date"
       },
-      "accessed_at": "2026-10-08T20:09:00.009024+00:00",
+      "accessed_at": "2026-10-09T17:43:04.388190+00:00",
       "content_hash": "cbb3b4d1effb46d6627a6fec7b8b3861ffca776c5100467ce0ff5c830e9b60ed",
       "recent_within_7_days": true,
-      "retrieval_and_extraction_ms": 3584.109,
+      "retrieval_and_extraction_ms": 3652.715,
       "api_status_code": 200,
-      "api_local_latency_ms": 178.551,
+      "api_local_latency_ms": 147.956,
       "api_result": {
-        "system_version": "evidence-rules-v0.2.0",
+        "system_version": "evidence-rules-v0.3.0",
         "document": {
           "title": "",
           "body": "A Prefeitura de Santos divulgou no Diário Oficial a relação das secretarias e órgãos que participarão do Plano Preventivo da Defesa Civil (PPDC), que entra em vigor em 1º de novembro.",
@@ -28,7 +28,7 @@
           "updated_at": null,
           "event_date": null,
           "date_provenance": {},
-          "fetched_at": "2026-10-08T20:09:00.009207Z"
+          "fetched_at": "2026-10-09T17:43:04.388434Z"
         },
         "reference_date": "2026-10-08",
         "results": [
@@ -37,8 +37,12 @@
               "id": "a99e5e1d726402c3",
               "text": "A Prefeitura de Santos divulgou no Diário Oficial a relação das secretarias e órgãos que participarão do Plano Preventivo da Defesa Civil (PPDC), que entra em vigor em 1º de novembro.",
               "event_date": null,
+              "event_date_provenance": null,
+              "context": "",
               "checkable": true,
-              "limitations": []
+              "limitations": [
+                "Data futura mencionada (agenda/vigência); não é tratada como data do evento."
+              ]
             },
             "verdict": "evidencia_insuficiente",
             "confidence": null,
@@ -57,19 +61,24 @@
                   "updated_at": "visible Atualizado label; date precision; time/zone unavailable",
                   "event_date": "not inferred from publication date"
                 },
-                "accessed_at": "2026-10-08T20:09:01.044240Z",
+                "accessed_at": "2026-10-09T17:43:05.402633Z",
                 "content_hash": "d889739a68f27fee5437ef0e1bea61a60b057ec7525433f0e5e9797c6d45ba44",
                 "origin_group": "santos.sp.gov.br",
-                "provider": "download_https",
+                "provider": "supplied_url",
                 "relation": "sustenta",
                 "relevance_score": 1.0,
-                "score_kind": "similaridade_lexical_nao_calibrada",
+                "score_kind": "cobertura_lexical_da_alegacao_nao_calibrada",
+                "source_category": "orgao_publico_br",
+                "retrieval": {
+                  "provider": "supplied_url"
+                },
                 "limitations": []
               }
             ],
             "rationale": "Regra conservadora: 1 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
             "temporal_status": "evento_nao_identificado",
             "limitations": [
+              "Data futura mencionada (agenda/vigência); não é tratada como data do evento.",
               "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
               "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
             ]
@@ -88,12 +97,12 @@
           "Deduplicação por domínio/conteúdo não detecta todas as republicações."
         ],
         "retrieval_status": "provided_urls",
-        "latency_ms": 176.107,
+        "latency_ms": 145.192,
         "cache_hit": false,
         "auxiliary": {}
       },
       "result": {
-        "system_version": "evidence-rules-v0.2.0",
+        "system_version": "evidence-rules-v0.3.0",
         "document": {
           "title": "",
           "body": "A Prefeitura de Santos divulgou no Diário Oficial a relação das secretarias e órgãos que participarão do Plano Preventivo da Defesa Civil (PPDC), que entra em vigor em 1º de novembro.",
@@ -103,7 +112,7 @@
           "updated_at": null,
           "event_date": null,
           "date_provenance": {},
-          "fetched_at": "2026-10-08T20:09:00.009207Z"
+          "fetched_at": "2026-10-09T17:43:04.388434Z"
         },
         "reference_date": "2026-10-08",
         "results": [
@@ -112,8 +121,12 @@
               "id": "a99e5e1d726402c3",
               "text": "A Prefeitura de Santos divulgou no Diário Oficial a relação das secretarias e órgãos que participarão do Plano Preventivo da Defesa Civil (PPDC), que entra em vigor em 1º de novembro.",
               "event_date": null,
+              "event_date_provenance": null,
+              "context": "",
               "checkable": true,
-              "limitations": []
+              "limitations": [
+                "Data futura mencionada (agenda/vigência); não é tratada como data do evento."
+              ]
             },
             "verdict": "evidencia_insuficiente",
             "confidence": null,
@@ -132,19 +145,22 @@
                   "updated_at": "visible Atualizado label; date precision; time/zone unavailable",
                   "event_date": "not inferred from publication date"
                 },
-                "accessed_at": "2026-10-08T20:09:00.009024Z",
+                "accessed_at": "2026-10-09T17:43:04.388190Z",
                 "content_hash": "d889739a68f27fee5437ef0e1bea61a60b057ec7525433f0e5e9797c6d45ba44",
                 "origin_group": "santos.sp.gov.br",
                 "provider": "download_https",
                 "relation": "sustenta",
                 "relevance_score": 1.0,
-                "score_kind": "similaridade_lexical_nao_calibrada",
+                "score_kind": "cobertura_lexical_da_alegacao_nao_calibrada",
+                "source_category": "orgao_publico_br",
+                "retrieval": {},
                 "limitations": []
               }
             ],
             "rationale": "Regra conservadora: 1 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
             "temporal_status": "evento_nao_identificado",
             "limitations": [
+              "Data futura mencionada (agenda/vigência); não é tratada como data do evento.",
               "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
               "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
             ]
@@ -163,7 +179,7 @@
           "Deduplicação por domínio/conteúdo não detecta todas as republicações."
         ],
         "retrieval_status": "real_https_public_source",
-        "latency_ms": 15.526,
+        "latency_ms": 18.034,
         "cache_hit": false,
         "auxiliary": {}
       },
@@ -179,14 +195,14 @@
         "updated_at": "visible Atualizado label; date precision; time/zone unavailable",
         "event_date": "not inferred from publication date"
       },
-      "accessed_at": "2026-10-08T20:09:01.582379+00:00",
+      "accessed_at": "2026-10-09T17:43:06.107855+00:00",
       "content_hash": "4db0d1bacad9d1917385006c79af5f52718050f5d2a94f078792d83a01cd11e1",
       "recent_within_7_days": true,
-      "retrieval_and_extraction_ms": 534.828,
+      "retrieval_and_extraction_ms": 701.609,
       "api_status_code": 200,
-      "api_local_latency_ms": 200.528,
+      "api_local_latency_ms": 179.456,
       "api_result": {
-        "system_version": "evidence-rules-v0.2.0",
+        "system_version": "evidence-rules-v0.3.0",
         "document": {
           "title": "",
           "body": "A comunidade da Ilha Diana recebeu, sexta-feira (2), novos equipamentos para auxiliar no atendimento a situações de emergência.",
@@ -196,7 +212,7 @@
           "updated_at": null,
           "event_date": null,
           "date_provenance": {},
-          "fetched_at": "2026-10-08T20:09:01.582579Z"
+          "fetched_at": "2026-10-09T17:43:06.108115Z"
         },
         "reference_date": "2026-10-08",
         "results": [
@@ -204,7 +220,9 @@
             "claim": {
               "id": "fbc37be64e685d72",
               "text": "A comunidade da Ilha Diana recebeu, sexta-feira (2), novos equipamentos para auxiliar no atendimento a situações de emergência.",
-              "event_date": null,
+              "event_date": "2026-10-02",
+              "event_date_provenance": "dia da semana e dia do mês; mês/ano inferidos da publicação (âncora: data de publicação informada na entrada; dia local America/Sao_Paulo)",
+              "context": "",
               "checkable": true,
               "limitations": []
             },
@@ -225,18 +243,22 @@
                   "updated_at": "visible Atualizado label; date precision; time/zone unavailable",
                   "event_date": "not inferred from publication date"
                 },
-                "accessed_at": "2026-10-08T20:09:01.928823Z",
+                "accessed_at": "2026-10-09T17:43:06.442973Z",
                 "content_hash": "b87e089b695541fec0017315949dd21ea21e4368fd342d1d316ebddbcc18d766",
                 "origin_group": "santos.sp.gov.br",
-                "provider": "download_https",
+                "provider": "supplied_url",
                 "relation": "sustenta",
                 "relevance_score": 1.0,
-                "score_kind": "similaridade_lexical_nao_calibrada",
+                "score_kind": "cobertura_lexical_da_alegacao_nao_calibrada",
+                "source_category": "orgao_publico_br",
+                "retrieval": {
+                  "provider": "supplied_url"
+                },
                 "limitations": []
               }
             ],
             "rationale": "Regra conservadora: 1 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
-            "temporal_status": "evento_nao_identificado",
+            "temporal_status": "evento_explicito",
             "limitations": [
               "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
               "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
@@ -256,12 +278,12 @@
           "Deduplicação por domínio/conteúdo não detecta todas as republicações."
         ],
         "retrieval_status": "provided_urls",
-        "latency_ms": 199.556,
+        "latency_ms": 178.459,
         "cache_hit": false,
         "auxiliary": {}
       },
       "result": {
-        "system_version": "evidence-rules-v0.2.0",
+        "system_version": "evidence-rules-v0.3.0",
         "document": {
           "title": "",
           "body": "A comunidade da Ilha Diana recebeu, sexta-feira (2), novos equipamentos para auxiliar no atendimento a situações de emergência.",
@@ -271,7 +293,7 @@
           "updated_at": null,
           "event_date": null,
           "date_provenance": {},
-          "fetched_at": "2026-10-08T20:09:01.582579Z"
+          "fetched_at": "2026-10-09T17:43:06.108115Z"
         },
         "reference_date": "2026-10-08",
         "results": [
@@ -279,7 +301,9 @@
             "claim": {
               "id": "fbc37be64e685d72",
               "text": "A comunidade da Ilha Diana recebeu, sexta-feira (2), novos equipamentos para auxiliar no atendimento a situações de emergência.",
-              "event_date": null,
+              "event_date": "2026-10-02",
+              "event_date_provenance": "dia da semana e dia do mês; mês/ano inferidos da publicação (âncora: data de publicação informada na entrada; dia local America/Sao_Paulo)",
+              "context": "",
               "checkable": true,
               "limitations": []
             },
@@ -300,18 +324,20 @@
                   "updated_at": "visible Atualizado label; date precision; time/zone unavailable",
                   "event_date": "not inferred from publication date"
                 },
-                "accessed_at": "2026-10-08T20:09:01.582379Z",
+                "accessed_at": "2026-10-09T17:43:06.107855Z",
                 "content_hash": "b87e089b695541fec0017315949dd21ea21e4368fd342d1d316ebddbcc18d766",
                 "origin_group": "santos.sp.gov.br",
                 "provider": "download_https",
                 "relation": "sustenta",
                 "relevance_score": 1.0,
-                "score_kind": "similaridade_lexical_nao_calibrada",
+                "score_kind": "cobertura_lexical_da_alegacao_nao_calibrada",
+                "source_category": "orgao_publico_br",
+                "retrieval": {},
                 "limitations": []
               }
             ],
             "rationale": "Regra conservadora: 1 origem(ns) compatível(is), 0 incompatível(is); são necessárias duas origens para decisão unilateral. Relações calculadas sobre os trechos exibidos, não sobre o score textual.",
-            "temporal_status": "evento_nao_identificado",
+            "temporal_status": "evento_explicito",
             "limitations": [
               "Comparação lexical estrita; equivalências semânticas e dependência editorial exigem revisão.",
               "Concordância de fontes não garante verdade; autoridade e contexto precisam ser avaliados."
@@ -331,7 +357,7 @@
           "Deduplicação por domínio/conteúdo não detecta todas as republicações."
         ],
         "retrieval_status": "real_https_public_source",
-        "latency_ms": 1.816,
+        "latency_ms": 5.334,
         "cache_hit": false,
         "auxiliary": {}
       },

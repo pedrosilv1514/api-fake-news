@@ -79,6 +79,7 @@ def run_verification(request):
         if remaining<=0: raise ExtractionError("Prazo global de recuperação excedido")
         return extract_document(url,fetcher=partial(fetch_public,timeout=min(8,remaining)))
     urls = [str(u) for u in request.evidence_urls]
+    provenance = {u: {"provider": "supplied_url"} for u in urls}
     for u in urls + ([str(request.url)] if request.url else []):
         validate_url(u)
     document = request.document or download(str(request.url))
@@ -95,7 +96,11 @@ def run_verification(request):
                 if time.monotonic()>=deadline:
                     warnings.append("Prazo global excedido antes da busca.")
                     break
-                try: urls.extend(provider.search(claim))
+                try:
+                    found = provider.search(claim)
+                    for k, v in found.items():
+                        if k not in provenance: provenance[k] = v
+                    urls.extend(found.keys())
                 except (FetchError, ValueError):
                     warnings.append("Provedor de busca indisponível.")
     unique = list(dict.fromkeys(urls))[:5]
@@ -123,7 +128,7 @@ def run_verification(request):
             for evidence in row.evidence:
                 evidence.accessed_at = accesses[str(evidence.url)]
     else:
-        result = verify(document,sources,request.reference_date,retrieval_status=status)
+        result = verify(document,sources,request.reference_date,retrieval_status=status,provenance=provenance)
         result.limitations.extend(warnings)
         cache.put(key,result)
     result.latency_ms = round((time.perf_counter()-start)*1000,3)

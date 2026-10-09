@@ -24,6 +24,8 @@ WINDOW_KEYS = {"evidencia", "qualidade_da_fonte", "corroboracao", "contexto", "a
 @pytest.fixture
 def model_and_document(monkeypatch):
     monkeypatch.delenv("SEARXNG_BASE_URL", raising=False)
+    provider = verificacao.NoSearchProvider()
+    monkeypatch.setattr(verificacao, "configured_provider", lambda: provider)
     monkeypatch.setattr(verificacao.engine, "load_model", lambda: None)
     monkeypatch.setattr(verificacao.engine, "svc_model", object())
     prediction = {
@@ -145,7 +147,7 @@ def test_missing_text_model_is_503_not_fabricated_numeric_scores(model_and_docum
 
 def test_configured_search_is_attempted_without_frontend_supplying_sources(model_and_document, monkeypatch):
     provider = Mock()
-    provider.search.return_value = []
+    provider.search.return_value = {}
     monkeypatch.setattr(verificacao, "configured_provider", lambda: provider)
     with TestClient(app) as client:
         response = client.post("/v2/analisar-url", json={"url": URL})

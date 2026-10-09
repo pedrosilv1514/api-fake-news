@@ -36,7 +36,7 @@ def test_provider_missing_and_source_failure_abstain(monkeypatch):
     result = verificacao.run_verification(verificacao.VerifyRequest(
         document=NewsDocument(body="A prefeitura registrou 82 casos."),
         search=True,evidence_urls=["https://example.com/source"]))
-    assert result.retrieval_status=="search_not_configured"
+    assert result.retrieval_status=="search_provider"
     assert result.results[0].verdict.value=="evidencia_insuficiente"
     assert any("indisponível" in s for s in result.limitations)
 

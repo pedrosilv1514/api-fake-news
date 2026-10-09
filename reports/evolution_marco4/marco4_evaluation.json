@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-10-09T18:20:18.988243+00:00",
+  "dataset": "data/marco4_sample.jsonl",
+  "metrics": {
+    "total": 3,
+    "accuracy": 0.3333,
+    "confusion_predictions": {
+      "sustentada": 0,
+      "refutada": 0,
+      "evidencias_conflitantes": 0,
+      "evidencia_insuficiente": 3
+    }
+  },
+  "limitations": [
+    "Dataset sintético/pequeno: não representa métricas de produção reais.",
+    "Falta anotação humana independente de precisão >=95% e recall >=90%."
+  ],
+  "items": [
+    {
+      "id": "hist_1",
+      "text": "Estão, finalmente, definidas as regras para produção da cannabis medicinal no Brasil. A ressalva não deslustra a ação da Agência Nacional de Vigilância Sanitária (Anvisa) ao tentar tirar o atraso do Brasil.",
+      "ground_truth": "sustentada",
+      "predicted": "evidencia_insuficiente",
+      "api_ms": 10729.51
+    },
+    {
+      "id": "sint_num",
+      "text": "O Banco Central anunciou hoje que a taxa Selic foi reduzida para 2,0% ao ano, contrariando as expectativas do mercado que aguardavam 10,5%.",
+      "ground_truth": "refutada",
+      "predicted": "evidencia_insuficiente",
+      "api_ms": 0.94
+    },
+    {
+      "id": "sint_neg",
+      "text": "A equipe médica do hospital confirmou que o paciente não sobreviveu ao tratamento experimental.",
+      "ground_truth": "evidencia_insuficiente",
+      "predicted": "evidencia_insuficiente",
+      "api_ms": 483.82
+    }
+  ]
+}

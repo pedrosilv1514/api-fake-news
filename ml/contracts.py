@@ -50,6 +50,10 @@ class Claim(BaseModel):
     id: str
     text: str
     event_date: date | None = None
+    # How event_date was obtained; publication date is never silently reused.
+    event_date_provenance: str | None = None
+    # Preceding title/sentence shown to search and reviewers; not part of the claim.
+    context: str = ""
     checkable: bool = True
     limitations: list[str] = Field(default_factory=list)
 
@@ -69,7 +73,11 @@ class Evidence(BaseModel):
     provider: str
     relation: Literal["sustenta", "refuta", "nao_conclusiva"] = "nao_conclusiva"
     relevance_score: float = Field(ge=0, le=1)
-    score_kind: str = "similaridade_lexical_nao_calibrada"
+    score_kind: str = "cobertura_lexical_da_alegacao_nao_calibrada"
+    # Descriptive only (e.g. public body domain); it never changes the relation or verdict.
+    source_category: str = "nao_classificada"
+    # How the URL was discovered: supplied URL or search provider, query, rank, listing date.
+    retrieval: dict[str, str | int | None] = Field(default_factory=dict)
     limitations: list[str] = Field(default_factory=list)
 
 
